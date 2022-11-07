@@ -144,7 +144,7 @@ const ValorReducidoCorregido = () => {
                                         <td>
                                             <div className='border-2 border-black rounded-md bg-fondoItemsTabla'>
                                                 {
-                                                    Math.round(items.vrc*100)/10
+                                                    Math.round(items.vrc*100)/100
                                                 }
                                             </div>
                                         </td>
