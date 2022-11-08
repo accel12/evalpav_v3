@@ -11,13 +11,15 @@ module.exports = {
         alturaCalculo: "calc(100vh - 204px)"
       },
       colors: {
-        azul: "#203864",
+        azul: "#0582CA",
+        botonPresionado: "#00A6FB",
         verde: "#269914CF",
-        fondoAlterno: '#DBD3C2',
+        fondoPrincipal: "#051923",
+        fondoAlterno: '#003554',
         fondoTextoAlterno: '#E2E0DA',
-        fondoHeader:'#97928C',
-        fondoItemsTabla:'#DCDBD4',
-        fondoPanel:'#E5E5C6'
+        fondoHeader:'#33415C',
+        fondoItemsTabla:'#7D8597',
+        fondoPanel:'#006494'
       }
     },
   },

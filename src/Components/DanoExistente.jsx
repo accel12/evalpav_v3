@@ -8,7 +8,7 @@ const DanoExistente = () => {
     console.log(global)
     console.log(dataExcel[indice])
     return (
-        <div className=' mt-4'>
+        <div className='mt-4'>
             <div className=' w-full text-center mb-4'>
                 <label className='font-bold '>DAÑOS EXISTENTES</label>
             </div>
@@ -16,32 +16,32 @@ const DanoExistente = () => {
                 <table className='w-full'>
                     <thead>
                         <tr>
-                            <th className=''>
-                                <div className='border-2 border-black rounded-md bg-fondoHeader'>INICIO</div>
+                            <th className='border border-black  bg-fondoHeader'>
+                                INICIO
                             </th>
-                            <th className=''>
-                                <div className='border-2 border-black rounded-md bg-fondoHeader'>FIN</div>
+                            <th className='border border-black  bg-fondoHeader'>
+                                FIN
                             </th>
-                            <th className=''>
-                                <div className='border-2 border-black rounded-md bg-fondoHeader'>DAÑO</div>
+                            <th className='border border-black  bg-fondoHeader'>
+                                DAÑO
                             </th>
-                            <th className=''>
-                                <div className='border-2 border-black rounded-md bg-fondoHeader'>SEVERIDAD</div>
+                            <th className='border border-black  bg-fondoHeader'>
+                                SEVERIDAD
                             </th>
-                            <th className=''>
-                                <div className='border-2 border-black rounded-md bg-fondoHeader'>X</div>
+                            <th className='border border-black  bg-fondoHeader'>
+                                x
                             </th>
-                            <th className=''>
-                                <div className='border-2 border-black rounded-md bg-fondoHeader'>Y</div>
+                            <th className='border border-black  bg-fondoHeader'>
+                                y
                             </th>
-                            <th className=''>
-                                <div className='border-2 border-black rounded-md bg-fondoHeader'>ANCHO</div>
+                            <th className='border border-black  bg-fondoHeader'>
+                                ANCHO
                             </th>
-                            <th className=''>
-                                <div className='border-2 border-black rounded-md bg-fondoHeader'>LONGITUD</div>
+                            <th className='border border-black  bg-fondoHeader'>
+                                LONGITUD
                             </th>
-                            <th className=''>
-                                <div className='border-2 border-black rounded-md bg-fondoHeader'>AREA DAÑO</div>
+                            <th className='border border-black  bg-fondoHeader'>
+                                AREA DAÑO
                             </th>
                         </tr>
                     </thead>
@@ -49,50 +49,32 @@ const DanoExistente = () => {
                         {
                             dataExcel[indice].map(items=>(
                                 <tr className=' text-center'>
-                                    <td>
-                                        <div className='border-2 border-black rounded-md bg-fondoItemsTabla'>
-                                            {items.ProgresivaInicial}
-                                        </div>
+                                    <td className='border border-black  bg-fondoItemsTabla'>
+                                        {items.ProgresivaInicial}
                                     </td>
-                                    <td>
-                                        <div className='border-2 border-black rounded-md bg-fondoItemsTabla'>
-                                            {items.ProgresivaFinal}
-                                        </div>
+                                    <td className='border border-black  bg-fondoItemsTabla'>
+                                        {items.ProgresivaFinal}
                                     </td>
-                                    <td>
-                                        <div className='border-2 border-black rounded-md bg-fondoItemsTabla'>
-                                            {items.Daño}
-                                        </div>
+                                    <td className='border border-black  bg-fondoItemsTabla'>
+                                        {items.Daño}
                                     </td>
-                                    <td>
-                                        <div className='border-2 border-black rounded-md bg-fondoItemsTabla'>
-                                            {items.Severidad}
-                                        </div>
+                                    <td className='border border-black  bg-fondoItemsTabla'>
+                                        {items.Severidad}
                                     </td>
-                                    <td>
-                                        <div className='border-2 border-black rounded-md bg-fondoItemsTabla'>
-                                            {items.Xfalla}
-                                        </div>
+                                    <td className='border border-black  bg-fondoItemsTabla'>
+                                        {items.Xfalla}
                                     </td>
-                                    <td>
-                                        <div className='border-2 border-black rounded-md bg-fondoItemsTabla'>
-                                            {items.Xfalla}
-                                        </div>
+                                    <td className='border border-black  bg-fondoItemsTabla'>
+                                        {items.Xfalla}
                                     </td>
-                                    <td>
-                                        <div className='border-2 border-black rounded-md bg-fondoItemsTabla'>
-                                            {items.Ancho}
-                                        </div>
+                                    <td className='border border-black  bg-fondoItemsTabla'>
+                                        {items.Ancho}
                                     </td>
-                                    <td>
-                                        <div className='border-2 border-black rounded-md bg-fondoItemsTabla'>
-                                            {Math.round(items.Longitud,3)}
-                                        </div>
+                                    <td className='border border-black  bg-fondoItemsTabla'>
+                                        {Math.round(items.Longitud,3)}
                                     </td>
-                                    <td>
-                                        <div className='border-2 border-black rounded-md bg-fondoItemsTabla'>
-                                          {Math.round(items.Area,3)}
-                                        </div>
+                                    <td className='border border-black  bg-fondoItemsTabla'>
+                                        {Math.round(items.Area,3)}
                                     </td>
                                 </tr>
                             ))

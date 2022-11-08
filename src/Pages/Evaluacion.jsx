@@ -41,7 +41,7 @@ const Evaluacion = () => {
 
 
     return (
-        <div style={{ backgroundImage: `url(${bg})`, backgroundPosition:'center', backgroundSize: 'cover' }} className="h-screen">
+        <div  className="bg-fondoPrincipal">
             <NavBar setValorNav={setValorNav} />
             <Outlet />
         </div>

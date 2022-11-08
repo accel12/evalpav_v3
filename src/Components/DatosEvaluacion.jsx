@@ -55,12 +55,12 @@ const DatosEvaluacion = ({setval,setGlobal,setPci,setValRed,setValRedCorregido})
         obtenerDatav2(dataBruta,dataFormulario.longitudMuestra,setval,pci,setValRed,setValRedCorregido)
     }
   return (
-    <div className='flex space-x-3'>
+    <div className='flex space-x-3 mr-3'>
         <div className='w-80'>
             <Mapa />
         </div>
-        <div className='w-full overflow-auto  h-alturaFormulario bg-azul rounded-3xl'>
-            <div className='h-full  p-5   text-white' >
+        <div className='w-full bg-fondoAlterno rounded-3xl'>
+            <div className='  p-5   text-white' >
                 <h1 className='text-center text-3xl font-bold underline pb-4'>DATOS DE EVALUCIÓN</h1>
                 <form>
                     <div className='flex'>

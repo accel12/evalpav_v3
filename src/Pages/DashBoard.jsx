@@ -13,12 +13,13 @@ import ValorReducido from '../Components/ValorReducido'
 import useIndice from '../hooks/useIndice'
 import { useState } from 'react'
 import ValorReducidoCorregido from '../Components/ValorReducidoCorregido'
+import searchIcon from '../Images/search.png'
 const DashBoard = ({setIndice}) => {
   const [progresivaInicio, setProgresivaInicio] = useState(0)
   const [progresivaFin, setProgresivaFin] = useState(0)
   const [area, setArea] = useState(0)
   const [valorActual, setValorActual] = useState([])
-
+  const [progresivaBuscar, setProgresivaBuscar] = useState(0)
   const data=useDataExcel()
   const pci=usePci()
   const indice=useIndice()
@@ -45,13 +46,37 @@ const DashBoard = ({setIndice}) => {
     setValorActual(data[indice])
   }, [indice])
   
+  const buscarProgresiva=()=>{
+    let listado=[]
+    data.forEach((item,i,lista)=>{
+      item.forEach(e=>{
+        let itemInicialInsertar={key:i,valor:e.ProgresivaInicial}
+        let itemFinalInsertar={key:i,valor:e.ProgresivaFinal}
+        listado.push(itemInicialInsertar)
+        listado.push(itemFinalInsertar)
+      })
+    })
+    const valorCercano= listado.reduce((a, b) => {
+      let aDiff = Math.abs(a.valor - progresivaBuscar);
+      let bDiff = Math.abs(b.valor - progresivaBuscar);
+
+      if (aDiff == bDiff) {
+          return a > b ? a : b;
+      } else {
+          return bDiff < aDiff ? b : a;
+      }
+    });
+    console.log(valorCercano)
+    setIndice(valorCercano.key)
+  }
+
   return (
-    <div className=' overflow-auto  h-alturaFormulario px-5 min-w-[720px]'>
-      <div className='bg-fondoAlterno rounded-3xl w-full h-alturaOutlet min-w-[720px] overflow-auto scroll-smooth'>
+    <div className=' px-5 min-w-[720px] text-white pb-2'>
+      <div className='bg-fondoAlterno rounded-3xl w-full min-w-[720px]  scroll-smooth'>
         <div className='flex justify-center items-center'>
           <div className=' flex items-center justify-center space-x-8  py-3 flex-wrap  min-w-[720px] max-w-[1080px]'>
             <div className='flex items-center my-4'>
-              <label className='mr-3 font-bold'>TRAMO:</label>
+              <label className='mr-3 font-bold '>TRAMO:</label>
               <label className='pr-8 pl-2 bg-fondoTextoAlterno rounded-md text-black border border-black'>LA VICTORIA - SAN LUIS</label>
             </div>
             <div className='flex items-center my-4'>
@@ -88,16 +113,18 @@ const DashBoard = ({setIndice}) => {
             </div>
             <div className='flex items-center my-4'>
               <label className='mr-3 font-bold'>BUSCAR:</label>
-              <input className='pr-8 pl-2 bg-fondoTextoAlterno rounded-md text-black border border-black'></input>
-              <button>Buscar</button>
+              <input className='pr-8 pl-2 bg-fondoTextoAlterno rounded-md text-black border border-black' onChange={e=>{setProgresivaBuscar(e.target.value)}}></input>
+              <button className='ml-2 text-white bg-azul hover:bg-botonPresionado focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-1.5 text-center inline-flex items-center' onClick={buscarProgresiva}>
+                <img src={searchIcon} className=' h-7' />
+              </button>
             </div>
           </div>
         </div>
-        <div className='flex mb-6 bg-fondoPanel py-2 rounded-full border-b border-black'>
+        <div className='flex mb-6 bg-fondoPanel py-2 border-b border-black'>
           <div className='h-6 flex items-center '>
             <button style={{height:25, width:25}}><img src={Menos} style={{height:25, width:25}} onClick={disminucion} /></button>
             <label className='mr-4 '>MUESTRA:</label>
-            <label className='pr-8 pl-2 mr-4 bg-white'>{indice}</label>
+            <label className='pr-8 pl-2 mr-4 bg-white text-black'>{indice}</label>
             <label className=' w-20'>DE {data.length}</label>
             <button style={{height:25, width:25}}><img src={Mas} style={{height:25, width:25}} onClick={aumento} /></button>
           </div>
