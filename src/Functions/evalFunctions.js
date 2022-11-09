@@ -48,6 +48,7 @@ const obtenerDatav2=async(data,distancia,setval,pci,setValRed,setValRedCorregido
   let arrayOrdenado=arrayImportado.sort((a, b) => {
         return a.ProgresivaInicial - b.ProgresivaInicial;
       });
+  
   //Creando nuevo array
 
   arrayOrdenado.map(itemArray=>{
@@ -73,7 +74,7 @@ const obtenerDatav2=async(data,distancia,setval,pci,setValRed,setValRedCorregido
       arraySegmentado.push(valorInsertar)
     }
   })
-
+  console.log(arraySegmentado)
   // acoplar por tamano
   const arraySegmentadoInicio=_.cloneDeep(arraySegmentado[0].ProgresivaInicial)
   const obtenerMayor=obtenerNumeroMayor(arraySegmentado)
@@ -94,6 +95,7 @@ const obtenerDatav2=async(data,distancia,setval,pci,setValRed,setValRedCorregido
     })
     arrayJuntado.push(items)
   }
+  
   // eliminar array vacios
   let arrayFinal= []
   arrayJuntado.forEach(items=>{
@@ -101,7 +103,7 @@ const obtenerDatav2=async(data,distancia,setval,pci,setValRed,setValRedCorregido
       arrayFinal.push(items)
     }
   })
-  
+  console.log(arrayFinal)
   arrayFinal.forEach(items=>{
     items.map(item=>{
       item.DS=item.Daño+item.Severidad
@@ -110,6 +112,7 @@ const obtenerDatav2=async(data,distancia,setval,pci,setValRed,setValRedCorregido
     })
   })
   setval(arrayFinal)
+  console.log(arrayFinal)
   calculoValorReducido(arrayFinal,pci,setValRed,setValRedCorregido,num)
 }
 
