@@ -175,7 +175,7 @@ const calculoValorReducido = async (arrayFinal,pci,setValRed,setValRedCorregido,
       let listaValores=[]
       let densidad=0
       let total=0
-      let areaCarril=(num)*item.AnchoDeCarril
+      let areaCarril=(num)*item[0].AnchoDeCarril
       Object.assign(itemArmado,{Dano:item[0].Daño})
       Object.assign(itemArmado,{Severidad:item[0].Severidad})
       item.forEach(e=>{
@@ -183,6 +183,7 @@ const calculoValorReducido = async (arrayFinal,pci,setValRed,setValRedCorregido,
         total=total+e.Area
       })
       densidad=Math.round((((total*100)/areaCarril))*10)/10
+      console.log(areaCarril)
       let calcularVR=pci.filter(itemP=>{
         return itemP.DENSIDAD == densidad && itemP.NUMERO == item[0].Daño 
       })
