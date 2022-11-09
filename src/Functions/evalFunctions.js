@@ -63,12 +63,13 @@ const obtenerDatav2=async(data,distancia,setval,pci,setValRed,setValRedCorregido
       if((valorFinalIterable + (num*i))>valorFinal){
         valorInsertar.ProgresivaInicial=valorInicialIterable + (num*i)
         valorInsertar.ProgresivaFinal=valorFinal
-        valorInsertar.Longitud=valorFinal-valorInicial
+        console.log(itemArray)
+        valorInsertar.Longitud=itemArray.Longitud
         valorInsertar.Area=copiaItemArray.Ancho*(valorFinal-valorInicial)
       }else{
         valorInsertar.ProgresivaInicial=valorInicialIterable + (num*i)
         valorInsertar.ProgresivaFinal=valorFinalIterable + (num*i)
-        valorInsertar.Longitud=num
+        valorInsertar.Longitud=itemArray.Longitud
         valorInsertar.Area=copiaItemArray.Ancho*num
       }
       arraySegmentado.push(valorInsertar)
@@ -174,11 +175,13 @@ const calculoValorReducido = async (arrayFinal,pci,setValRed,setValRedCorregido,
     let progresivaInicial=primerObjeto[0].ProgresivaInicial
     let area=(progresivaFinal-progresivaInicial)*primerObjeto[0].Ancho
     items.forEach(item=>{
+      console.log(item)
+      console.log(items)
       let itemArmado={}
       let listaValores=[]
       let densidad=0
       let total=0
-      let areaCarril=(50)*3.5
+      let areaCarril=(num)*item.AnchoDeCarril
       Object.assign(itemArmado,{Dano:item[0].Daño})
       Object.assign(itemArmado,{Severidad:item[0].Severidad})
       item.forEach(e=>{
