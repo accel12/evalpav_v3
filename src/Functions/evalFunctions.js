@@ -58,18 +58,19 @@ const obtenerDatav2=async(data,distancia,setval,pci,setValRed,setValRedCorregido
     let valorInicialIterable=valorInicial
     let valorFinalIterable=valorInicialIterable + num
     let cantidadDivisiones=Math.ceil((valorFinal-valorInicial)/num)
+    console.log(itemArray.Longitud)
     for(let i=0;i<cantidadDivisiones;i++){
       let valorInsertar=_.cloneDeep(copiaItemArray)
       if((valorFinalIterable + (num*i))>valorFinal){
         valorInsertar.ProgresivaInicial=valorInicialIterable + (num*i)
         valorInsertar.ProgresivaFinal=valorFinal
         valorInsertar.Longitud=itemArray.Longitud
-        valorInsertar.Area=copiaItemArray.Ancho*(valorFinal-valorInicial)
+        valorInsertar.Area=copiaItemArray.Ancho*itemArray.Longitud
       }else{
         valorInsertar.ProgresivaInicial=valorInicialIterable + (num*i)
         valorInsertar.ProgresivaFinal=valorFinalIterable + (num*i)
         valorInsertar.Longitud=itemArray.Longitud
-        valorInsertar.Area=copiaItemArray.Ancho*num
+        valorInsertar.Area=copiaItemArray.Ancho*itemArray.Longitud
       }
       arraySegmentado.push(valorInsertar)
     }
