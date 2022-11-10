@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useEffect, useRef } from "react";
 import CanvasDraw from "react-canvas-draw";
 const CarreteraImage = () => {
@@ -14,6 +15,16 @@ const CarreteraImage = () => {
     const r1Info = { x: 20, y: 30, w: 100, h: 50 };
     const r1Style = { borderColor: "red", borderWidth: 10 };
     drawRect(r1Info, r1Style);
+=======
+import React, { useEffect } from 'react'
+const CarreteraImage = () => {
+  return (
+    <div style={{marginTop:'20px'}}>
+    </div>
+        
+  )
+}
+>>>>>>> 4c9bcae74087d5f9852a632d0c908ac283c4c13c
 
     const r2Info = { x: 100, y: 100, w: 80, h: 150 };
     drawRect(r2Info);
