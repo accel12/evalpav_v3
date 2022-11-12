@@ -175,7 +175,7 @@ const calculoValorReducido = async (arrayFinal,pci,setValRed,setValRedCorregido,
       let listaValores=[]
       let densidad=0
       let total=0
-      let areaCarril=(50)*3.5
+      let areaCarril=(num)*3.5
       Object.assign(itemArmado,{Dano:item[0].Daño})
       Object.assign(itemArmado,{Severidad:item[0].Severidad})
       item.forEach(e=>{
