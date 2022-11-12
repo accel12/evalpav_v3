@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from "react";
 import CanvasDraw from "react-canvas-draw";
 const CarreteraImage = () => {
@@ -15,15 +14,6 @@ const CarreteraImage = () => {
     const r1Info = { x: 20, y: 30, w: 100, h: 50 };
     const r1Style = { borderColor: "red", borderWidth: 10 };
     drawRect(r1Info, r1Style);
-import React, { useEffect } from 'react'
-const CarreteraImage = () => {
-  return (
-    <div style={{marginTop:'20px'}}>
-    </div>
-        
-  )
-}
->>>>>>> 4c9bcae74087d5f9852a632d0c908ac283c4c13c
 
     const r2Info = { x: 100, y: 100, w: 80, h: 150 };
     drawRect(r2Info);
@@ -55,17 +45,11 @@ const CarreteraImage = () => {
     ctx.stroke();
   };
 
-=======
-import React, { useEffect } from 'react'
-import CanvasDraw from "react-canvas-draw";
-const CarreteraImage = () => {
->>>>>>> parent of 8dc5097 (cambios playa)
   return (
-    <div style={{marginTop:'20px'}}>
-      <CanvasDraw style={{width:'100%', height:'260px'}} hideGrid={true} backgroundColor='#808080' />
+    <div style={{ marginTop: "20px", backgroundColor: "#1E1E1E" }}>
+      <canvas ref={canvas} style={{ backgroundColor: "#808080" }}></canvas>
     </div>
-        
-  )
-}
+  );
+};
 
-export default CarreteraImage
+export default CarreteraImage;

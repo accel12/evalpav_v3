@@ -71,10 +71,10 @@ const DanoExistente = () => {
                                         {items.Ancho}
                                     </td>
                                     <td className='border border-black  bg-fondoItemsTabla'>
-                                        {Math.round(items.Longitud*100)/100}
+                                        {Math.round(items.Longitud,3)}
                                     </td>
                                     <td className='border border-black  bg-fondoItemsTabla'>
-                                        {Math.round(items.Area*100)/100}
+                                        {Math.round(items.Area,3)}
                                     </td>
                                 </tr>
                             ))

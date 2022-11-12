@@ -48,7 +48,6 @@ const obtenerDatav2=async(data,distancia,setval,pci,setValRed,setValRedCorregido
   let arrayOrdenado=arrayImportado.sort((a, b) => {
         return a.ProgresivaInicial - b.ProgresivaInicial;
       });
-  
   //Creando nuevo array
 
   arrayOrdenado.map(itemArray=>{
@@ -58,23 +57,23 @@ const obtenerDatav2=async(data,distancia,setval,pci,setValRed,setValRedCorregido
     let valorInicialIterable=valorInicial
     let valorFinalIterable=valorInicialIterable + num
     let cantidadDivisiones=Math.ceil((valorFinal-valorInicial)/num)
-    console.log(itemArray.Longitud)
     for(let i=0;i<cantidadDivisiones;i++){
       let valorInsertar=_.cloneDeep(copiaItemArray)
       if((valorFinalIterable + (num*i))>valorFinal){
         valorInsertar.ProgresivaInicial=valorInicialIterable + (num*i)
         valorInsertar.ProgresivaFinal=valorFinal
-        valorInsertar.Longitud=itemArray.Longitud
-        valorInsertar.Area=copiaItemArray.Ancho*itemArray.Longitud
+        valorInsertar.Longitud=valorFinal-valorInicial
+        valorInsertar.Area=copiaItemArray.Ancho*(valorFinal-valorInicial)
       }else{
         valorInsertar.ProgresivaInicial=valorInicialIterable + (num*i)
         valorInsertar.ProgresivaFinal=valorFinalIterable + (num*i)
-        valorInsertar.Longitud=itemArray.Longitud
-        valorInsertar.Area=copiaItemArray.Ancho*itemArray.Longitud
+        valorInsertar.Longitud=num
+        valorInsertar.Area=copiaItemArray.Ancho*num
       }
       arraySegmentado.push(valorInsertar)
     }
   })
+
   // acoplar por tamano
   const arraySegmentadoInicio=_.cloneDeep(arraySegmentado[0].ProgresivaInicial)
   const obtenerMayor=obtenerNumeroMayor(arraySegmentado)
@@ -95,7 +94,6 @@ const obtenerDatav2=async(data,distancia,setval,pci,setValRed,setValRedCorregido
     })
     arrayJuntado.push(items)
   }
-  
   // eliminar array vacios
   let arrayFinal= []
   arrayJuntado.forEach(items=>{
@@ -103,10 +101,11 @@ const obtenerDatav2=async(data,distancia,setval,pci,setValRed,setValRedCorregido
       arrayFinal.push(items)
     }
   })
+  
   arrayFinal.forEach(items=>{
     items.map(item=>{
       item.DS=item.Daño+item.Severidad
-      item.AreaMuestra=num*item.AnchoDeCarril
+      item.AreaMuestra=num*3.5
       return item
     })
   })
@@ -176,7 +175,7 @@ const calculoValorReducido = async (arrayFinal,pci,setValRed,setValRedCorregido,
       let listaValores=[]
       let densidad=0
       let total=0
-      let areaCarril=(num)*item[0].AnchoDeCarril
+      let areaCarril=(50)*3.5
       Object.assign(itemArmado,{Dano:item[0].Daño})
       Object.assign(itemArmado,{Severidad:item[0].Severidad})
       item.forEach(e=>{
@@ -184,7 +183,6 @@ const calculoValorReducido = async (arrayFinal,pci,setValRed,setValRedCorregido,
         total=total+e.Area
       })
       densidad=Math.round((((total*100)/areaCarril))*10)/10
-      console.log(areaCarril)
       let calcularVR=pci.filter(itemP=>{
         return itemP.DENSIDAD == densidad && itemP.NUMERO == item[0].Daño 
       })
@@ -270,6 +268,7 @@ const calculoValorReducido = async (arrayFinal,pci,setValRed,setValRedCorregido,
     valorReducidoCorregido.push(VRCItem)
   })
   setValRedCorregido(valorReducidoCorregido)
+  console.log(valorReducidoCorregido)
 }
 
 export{
