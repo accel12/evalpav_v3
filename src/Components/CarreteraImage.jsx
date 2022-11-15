@@ -34,20 +34,29 @@ const CarreteraImage = () => {
   return (
     <div style={{marginTop:'20px'}} className="flex justify-center items-center">
       <div className='flex'>
-        <div className="rotate-180 flex justify-center mr-3" style={{ writingMode: 'vertical-rl', height:'250px' }}>
+        <div className="rotate-180 flex justify-center font-bold mr-3" style={{ writingMode: 'vertical-rl', height:'250px' }}>
           AREA DE CARRIL (m)
         </div>
         <div className='flex flex-col mr-2 justify-start items-start' style={{height:'250px'}}>
-          <label style={{marginBottom:'20px', marginTop:'-10px'}}>3.50</label>
+          <label style={{marginBottom:'20px', marginTop:'-23px'}}>3.50</label>
           <label style={{marginBottom:'40px'}}>3.00</label>
           <label style={{marginBottom:'40px'}}>2.00</label>
           <label style={{marginBottom:'40px'}}>1.00</label>
           <label style={{marginBottom:'40px'}}>0.00</label>
         </div>
       </div>
-      <canvas style={{backgroundColor:'#808080'}} ref={canvasRef} >
-
-      </canvas>
+      <div>
+        <canvas style={{backgroundColor:'#808080'}} ref={canvasRef} />
+        <div className='flex mt-1'>
+          <label className="rotate-180 flex justify-center" style={{ writingMode: 'vertical-rl', marginTop:'5px', marginLeft:'-10px', marginRight:'90px' }} >0.00</label>
+          <label className="rotate-180 flex justify-center" style={{ writingMode: 'vertical-rl', marginTop:'5px', marginRight:'90px' }} >10.00</label>
+          <label className="rotate-180 flex justify-center" style={{ writingMode: 'vertical-rl', marginTop:'5px', marginRight:'90px'  }} >20.00</label>
+          <label className="rotate-180 flex justify-center" style={{ writingMode: 'vertical-rl', marginTop:'5px', marginRight:'90px'  }} >30.00</label>
+          <label className="rotate-180 flex justify-center" style={{ writingMode: 'vertical-rl', marginTop:'5px', marginRight:'90px'  }} >40.00</label>
+          <label className="rotate-180 flex justify-center" style={{ writingMode: 'vertical-rl', marginTop:'5px', marginRight:'90px'  }} >50.00</label>
+          <label className="rotate-180 flex justify-center" style={{ writingMode: 'vertical-rl', marginTop:'5px', marginRight:'90px'  }} >60.00</label>
+        </div>
+      </div>
     </div>
         
   )
