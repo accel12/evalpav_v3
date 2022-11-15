@@ -38,7 +38,7 @@ const CarreteraImage = () => {
           AREA DE CARRIL (m)
         </div>
         <div className='flex flex-col mr-2 justify-start items-start' style={{height:'250px'}}>
-          <label style={{marginBottom:'20px', marginTop:'-23px'}}>3.50</label>
+          <label style={{marginBottom:'20px', marginTop:'-35px'}}>3.50</label>
           <label style={{marginBottom:'40px'}}>3.00</label>
           <label style={{marginBottom:'40px'}}>2.00</label>
           <label style={{marginBottom:'40px'}}>1.00</label>
