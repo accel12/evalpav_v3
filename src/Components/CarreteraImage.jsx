@@ -17,8 +17,19 @@ const CarreteraImage = () => {
     lineaAmarilla.fillStyle = '#FFC000'
     lineaAmarilla.fillRect(-10,240,720, 10)
   }
+  const dibujoFalla=()=>{
+    const canvas = canvasRef.current
+    const falla = canvas.getContext('2d')
+    //Our first draw
+    falla.strokeStyle = "black";
+    falla.rect(20, 50, 150, 70)
+    falla.stroke();
+  }
   useEffect(() => {
     disenoCarretera()
+  }, [])
+  useEffect(() => {
+    dibujoFalla()
   }, [])
   return (
     <div style={{marginTop:'20px'}} className="flex justify-center">

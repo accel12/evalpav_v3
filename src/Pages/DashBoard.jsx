@@ -14,6 +14,7 @@ import useIndice from '../hooks/useIndice'
 import { useState } from 'react'
 import ValorReducidoCorregido from '../Components/ValorReducidoCorregido'
 import searchIcon from '../Images/search.png'
+import ValorPCI from '../Components/ValorPCI'
 const DashBoard = ({setIndice}) => {
   const [progresivaInicio, setProgresivaInicio] = useState(0)
   const [progresivaFin, setProgresivaFin] = useState(0)
@@ -144,6 +145,7 @@ const DashBoard = ({setIndice}) => {
         </div>
         <ValorReducido />
         <ValorReducidoCorregido />
+        <ValorPCI />
       </div>
     </div>
   )

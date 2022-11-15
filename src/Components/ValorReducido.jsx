@@ -14,7 +14,7 @@ const ValorReducido = () => {
     const [altura, setAltura] = useState(0)
     
     return (
-        <div className='mt-4'>
+        <div className='mt-4  pb-2'>
             <div className=' w-full text-center justify-center mb-4 flex  bg-fondoPanel py-2 border-b border-black'>
                 <label className='font-bold'>CALCULO DEL VALOR DEDUCIDO TOTAL</label>
             </div>
