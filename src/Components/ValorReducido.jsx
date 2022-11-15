@@ -193,7 +193,7 @@ const ValorReducido = () => {
                                         <td className='border border-black bg-fondoItemsTabla'>
                                             
                                             {
-                                                Math.round(items.Vr*100)/100
+                                                Math.round(items.Vr*10)/10
                                             }
                                             
                                         </td>
@@ -202,7 +202,7 @@ const ValorReducido = () => {
                                             <td rowSpan={999} className='border border-black bg-fondoItemsTabla' >
                                                 {
                                                     
-                                                    Math.round(lista.m*100)/100
+                                                    Math.round(lista.m*10)/10
                                                 }
                                             </td> :
                                             null

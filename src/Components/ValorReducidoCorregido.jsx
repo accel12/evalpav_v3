@@ -128,7 +128,7 @@ const ValorReducidoCorregido = () => {
                                         <td className='border border-black bg-fondoItemsTabla'>
                                             
                                                 {
-                                                    Math.round(items.total*100)/100
+                                                    Math.round(items.total*10)/10
                                                 }
                                             
                                         </td>
@@ -142,7 +142,7 @@ const ValorReducidoCorregido = () => {
                                         <td className='border border-black bg-fondoItemsTabla'>
                                             
                                                 {
-                                                    Math.round(items.vrc*100)/100
+                                                    Math.round(items.vrc*10)/10
                                                 }
                                             
                                         </td>
