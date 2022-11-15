@@ -193,7 +193,7 @@ const ValorReducido = () => {
                                         <td className='border border-black bg-fondoItemsTabla'>
                                             
                                             {
-                                                items.Vr
+                                                Math.round(items.Vr*100)/100
                                             }
                                             
                                         </td>
