@@ -58,7 +58,6 @@ const obtenerDatav2=async(data,distancia,setval,pci,setValRed,setValRedCorregido
     let valorInicialIterable=valorInicial
     let valorFinalIterable=valorInicialIterable + num
     let cantidadDivisiones=Math.ceil((valorFinal-valorInicial)/num)
-    console.log(itemArray.Longitud)
     for(let i=0;i<cantidadDivisiones;i++){
       let valorInsertar=_.cloneDeep(copiaItemArray)
       if((valorFinalIterable + (num*i))>valorFinal){
@@ -66,12 +65,15 @@ const obtenerDatav2=async(data,distancia,setval,pci,setValRed,setValRedCorregido
         valorInsertar.ProgresivaFinal=valorFinal
         valorInsertar.Longitud=itemArray.Longitud
         valorInsertar.Area=copiaItemArray.Ancho*itemArray.Longitud
+        valorInsertar.Yfalla = valorInicialIterable + (num*i) + valorInsertar.Longitud
       }else{
         valorInsertar.ProgresivaInicial=valorInicialIterable + (num*i)
         valorInsertar.ProgresivaFinal=valorFinalIterable + (num*i)
         valorInsertar.Longitud=itemArray.Longitud
         valorInsertar.Area=copiaItemArray.Ancho*itemArray.Longitud
+        valorInsertar.Yfalla= valorInicialIterable + (num*i)+valorInsertar.Longitud
       }
+      
       arraySegmentado.push(valorInsertar)
     }
   })
@@ -184,7 +186,6 @@ const calculoValorReducido = async (arrayFinal,pci,setValRed,setValRedCorregido,
         total=total+e.Area
       })
       densidad=Math.round((((total*100)/areaCarril))*10)/10
-      console.log(areaCarril)
       let calcularVR=pci.filter(itemP=>{
         return itemP.DENSIDAD == densidad && itemP.NUMERO == item[0].Daño 
       })

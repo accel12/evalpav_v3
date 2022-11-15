@@ -14,9 +14,6 @@ const ValorReducidoCorregido = () => {
     const indice=useIndice()
     const cellM = useRef()
     const [altura, setAltura] = useState(0)
-    useEffect(() => {
-      console.log(dataValCorregido)
-    }, [])
     
   return (
     <div className='mt-4 pb-2'>

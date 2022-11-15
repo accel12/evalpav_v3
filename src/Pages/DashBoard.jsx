@@ -29,7 +29,6 @@ const DashBoard = ({setIndice}) => {
       setIndice(0)
     }else{
       setIndice(indice+1)
-      console.log(data[indice+1])
     }
   }
   const disminucion=()=>{
@@ -67,7 +66,6 @@ const DashBoard = ({setIndice}) => {
           return bDiff < aDiff ? b : a;
       }
     });
-    console.log(valorCercano)
     setIndice(valorCercano.key)
   }
 
@@ -140,7 +138,7 @@ const DashBoard = ({setIndice}) => {
           <div className='w-full px-3'>
             <TiposFalla />
             <DanoExistente />
-            <CarreteraImage />
+            <CarreteraImage data={valorActual} />
           </div>
         </div>
         <ValorReducido />

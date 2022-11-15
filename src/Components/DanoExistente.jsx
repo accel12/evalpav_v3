@@ -5,8 +5,6 @@ import useIndice from '../hooks/useIndice'
 const DanoExistente = () => {
     const dataExcel=useDataExcel()
     const indice=useIndice()
-    console.log(global)
-    console.log(dataExcel[indice])
     return (
         <div className='mt-4'>
             <div className=' w-full text-center mb-4'>
@@ -65,7 +63,7 @@ const DanoExistente = () => {
                                         {items.Xfalla}
                                     </td>
                                     <td className='border border-black  bg-fondoItemsTabla'>
-                                        {items.Xfalla}
+                                        {items.Yfalla}
                                     </td>
                                     <td className='border border-black  bg-fondoItemsTabla'>
                                         {items.Ancho}
