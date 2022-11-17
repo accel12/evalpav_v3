@@ -8,7 +8,7 @@ import Mapa from './Mapa'
 import '../styles/inicio.css'
 import { useEffect } from 'react'
 import usePci from '../hooks/usePci'
-const DatosEvaluacion = ({setval,setGlobal,setPci,setValRed,setValRedCorregido}) => {
+const DatosEvaluacion = ({setval,setGlobal,setPci,setValRed,setValRedCorregido, setFormulario}) => {
     const navigate = useNavigate();
     const pci=usePci()
     const [cargaBrutaEstado, setCargaBrutaEstado] = useState(false)
@@ -46,6 +46,7 @@ const DatosEvaluacion = ({setval,setGlobal,setPci,setValRed,setValRedCorregido})
     const enviarFormulario=async(e)=>{
         e.preventDefault()
         await convertirv2()
+        setFormulario(dataFormulario)
         alert('Datos Guardados')
     }
     const obtenerData= async(e)=>{
