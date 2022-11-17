@@ -48,10 +48,10 @@ const DanoExistente = () => {
                             dataExcel[indice].map(items=>(
                                 <tr className=' text-center'>
                                     <td className='border border-black  bg-fondoItemsTabla'>
-                                        {items.ProgresivaInicial}
+                                        {Math.round(items.ProgresivaInicial*100)/100}
                                     </td>
                                     <td className='border border-black  bg-fondoItemsTabla'>
-                                        {items.ProgresivaFinal}
+                                        {Math.round(items.ProgresivaFinal*100)/100}
                                     </td>
                                     <td className='border border-black  bg-fondoItemsTabla'>
                                         {items.Daño}

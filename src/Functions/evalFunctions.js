@@ -56,6 +56,7 @@ const obtenerDatav2=async(data,distancia,setval,pci,setValRed,setValRedCorregido
     let valorInicial=copiaItemArray.ProgresivaInicial
     let valorFinal=copiaItemArray.ProgresivaFinal
     let valorInicialIterable=valorInicial
+    let longitud=valorFinal-valorInicial
     let valorFinalIterable=valorInicialIterable + num
     let cantidadDivisiones=Math.ceil((valorFinal-valorInicial)/num)
     for(let i=0;i<cantidadDivisiones;i++){
@@ -63,20 +64,19 @@ const obtenerDatav2=async(data,distancia,setval,pci,setValRed,setValRedCorregido
       if((valorFinalIterable + (num*i))>valorFinal){
         valorInsertar.ProgresivaInicial=valorInicialIterable + (num*i)
         valorInsertar.ProgresivaFinal=valorFinal
-        valorInsertar.Longitud=itemArray.Longitud
-        valorInsertar.Area=copiaItemArray.Ancho*itemArray.Longitud
-        valorInsertar.Yfalla = valorInicialIterable + (num*i) + valorInsertar.Longitud
+        valorInsertar.Longitud=valorFinal-valorInsertar.ProgresivaInicial
+        valorInsertar.Area=copiaItemArray.Ancho*longitud
       }else{
         valorInsertar.ProgresivaInicial=valorInicialIterable + (num*i)
         valorInsertar.ProgresivaFinal=valorFinalIterable + (num*i)
-        valorInsertar.Longitud=itemArray.Longitud
-        valorInsertar.Area=copiaItemArray.Ancho*itemArray.Longitud
-        valorInsertar.Yfalla= valorInicialIterable + (num*i)+valorInsertar.Longitud
+        valorInsertar.Longitud=valorInsertar.ProgresivaFinal-valorInsertar.ProgresivaInicial
+        valorInsertar.Area=copiaItemArray.Ancho*(valorInsertar.ProgresivaFinal-valorInsertar.ProgresivaInicial)
       }
-      
       arraySegmentado.push(valorInsertar)
     }
   })
+  let clonArraySegmentado=_.cloneDeep(arraySegmentado)
+  let nuevosArray=[]
   // acoplar por tamano
   const arraySegmentadoInicio=_.cloneDeep(arraySegmentado[0].ProgresivaInicial)
   const obtenerMayor=obtenerNumeroMayor(arraySegmentado)
@@ -87,9 +87,47 @@ const obtenerDatav2=async(data,distancia,setval,pci,setValRed,setValRedCorregido
     let items=_.cloneDeep(arraySegmentado.filter(limite=>
       limite.ProgresivaInicial >= inicioJuntado && limite.ProgresivaInicial < FinalJuntado 
     ))
+    items.forEach(item=>{
+      let clonItem=_.cloneDeep(item)
+      if(item.ProgresivaFinal>FinalJuntado){
+        let nuevoArrayItem=_.cloneDeep(item)
+        nuevoArrayItem.ProgresivaInicial=FinalJuntado
+        nuevoArrayItem.ProgresivaFinal=clonItem.ProgresivaFinal
+        nuevoArrayItem.Longitud=nuevoArrayItem.ProgresivaFinal-nuevoArrayItem.ProgresivaInicial
+        nuevosArray.push(nuevoArrayItem)
+      }
+      if(item.ProgresivaInicial<inicioJuntado){
+        item.ProgresivaInicial=inicioJuntado
+        let nuevoArrayItem=_.cloneDeep(item)
+        nuevoArrayItem.ProgresivaInicial=clonItem.ProgresivaInicial
+        nuevoArrayItem.ProgresivaFinal=inicioJuntado
+        nuevoArrayItem.Longitud=nuevoArrayItem.ProgresivaFinal-nuevoArrayItem.ProgresivaInicial
+        nuevosArray.push(nuevoArrayItem)
+      }
+    })
+  }
+  // juntando arrays
+  let arrayCombinado=clonArraySegmentado.concat(nuevosArray)
+
+  //reordenando array juntado
+  arrayCombinado.sort((a, b) => {
+    return a.ProgresivaInicial - b.ProgresivaInicial;
+  });
+  console.log(arrayCombinado)
+  //Volver a acoplar
+  const arraySegmentadoInicio2=_.cloneDeep(arrayCombinado[0].ProgresivaInicial)
+  const obtenerMayor2=obtenerNumeroMayor(arrayCombinado)
+  const nuevaDivision2=Math.ceil((obtenerMayor2-arraySegmentadoInicio2)/num)
+  for(let i=0;i<nuevaDivision2;i++){
+    let inicioJuntado= arraySegmentadoInicio2 + num*i
+    let FinalJuntado= arraySegmentadoInicio2 + num*(i+1)
+    let items=_.cloneDeep(arrayCombinado.filter(limite=>
+      limite.ProgresivaInicial >= inicioJuntado && limite.ProgresivaInicial < FinalJuntado 
+    ))
     items.map(item=>{
       if(item.ProgresivaFinal>FinalJuntado){
         item.ProgresivaFinal=FinalJuntado
+        item.Longitud=FinalJuntado-item.ProgresivaInicial
       }
       if(item.ProgresivaInicial<inicioJuntado){
         item.ProgresivaInicial=inicioJuntado
@@ -97,7 +135,7 @@ const obtenerDatav2=async(data,distancia,setval,pci,setValRed,setValRedCorregido
     })
     arrayJuntado.push(items)
   }
-  
+
   // eliminar array vacios
   let arrayFinal= []
   arrayJuntado.forEach(items=>{
@@ -109,6 +147,12 @@ const obtenerDatav2=async(data,distancia,setval,pci,setValRed,setValRedCorregido
     items.map(item=>{
       item.DS=item.Daño+item.Severidad
       item.AreaMuestra=num*item.AnchoDeCarril
+      return item
+    })
+  })
+  arrayFinal.forEach((items)=>{
+    items.map((item,i,lista)=>{
+      item.Yfalla=Math.round((item.ProgresivaInicial - lista[0].ProgresivaInicial)*100)/100
       return item
     })
   })
@@ -166,8 +210,8 @@ const calculoValorReducido = async (arrayFinal,pci,setValRed,setValRedCorregido,
   })
 
   valoresReducidos.forEach(items=>{
+    console.log(items)
     let itemsPush=[]
-    // let area=(items[items.length-1].ProgresivaFinal-item[0].ProgresivaInicial)*num
     let ultimoObjeto=items[items.length-1]
     let progresivaFinal=ultimoObjeto[ultimoObjeto.length-1].ProgresivaFinal
     let primerObjeto=items[0]
