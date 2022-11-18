@@ -210,7 +210,6 @@ const calculoValorReducido = async (arrayFinal,pci,setValRed,setValRedCorregido,
   })
 
   valoresReducidos.forEach(items=>{
-    console.log(items)
     let itemsPush=[]
     let ultimoObjeto=items[items.length-1]
     let progresivaFinal=ultimoObjeto[ultimoObjeto.length-1].ProgresivaFinal
@@ -226,8 +225,15 @@ const calculoValorReducido = async (arrayFinal,pci,setValRed,setValRedCorregido,
       Object.assign(itemArmado,{Dano:item[0].Daño})
       Object.assign(itemArmado,{Severidad:item[0].Severidad})
       item.forEach(e=>{
-        listaValores.push(e.Area)
-        total=total+e.Area
+        console.log(e)
+        if(e.Daño===4 || e.Daño===7 || e.Daño===8 || e.Daño===9 || e.Daño===10 || e.Daño===13){
+          listaValores.push(e.Longitud)
+          total=total+e.Longitud
+        }else{
+          listaValores.push(e.Area)
+          total=total+e.Area
+        }
+        
       })
       densidad=Math.round((((total*100)/areaCarril))*10)/10
       let calcularVR=pci.filter(itemP=>{
