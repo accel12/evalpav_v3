@@ -15,14 +15,13 @@ import { useState } from 'react'
 import ValorReducidoCorregido from '../Components/ValorReducidoCorregido'
 import searchIcon from '../Images/search.png'
 import ValorPCI from '../Components/ValorPCI'
+import useResultadosValorDeducido from '../hooks/useResultadosValorDeducido'
 const DashBoard = ({setIndice}) => {
-  const [progresivaInicio, setProgresivaInicio] = useState(0)
-  const [progresivaFin, setProgresivaFin] = useState(0)
-  const [area, setArea] = useState(0)
   const [valorActual, setValorActual] = useState([])
   const [progresivaBuscar, setProgresivaBuscar] = useState(0)
   const data=useDataExcel()
   const pci=usePci()
+  const valorPCITotal=useResultadosValorDeducido
   const indice=useIndice()
   const aumento=()=>{
     if(indice==data.length-1){

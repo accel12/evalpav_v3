@@ -36,7 +36,7 @@ const obtenerNumeroMayor=(array)=>{
   return mayor
 }
 
-const obtenerDatav2=async(data,distancia,setval,pci,setValRed,setValRedCorregido)=>{
+const obtenerDatav2=async(data,distancia,setval,pci,setValRed,setValRedCorregido,setResultadoValDeducido)=>{
   let arrayImportado=[...data]  
   let arraySegmentado=[]
   let num=parseInt(distancia)
@@ -157,10 +157,10 @@ const obtenerDatav2=async(data,distancia,setval,pci,setValRed,setValRedCorregido
     })
   })
   setval(arrayFinal)
-  calculoValorReducido(arrayFinal,pci,setValRed,setValRedCorregido,num)
+  calculoValorReducido(arrayFinal,pci,setValRed,setValRedCorregido,num,setResultadoValDeducido)
 }
 
-const calculoValorReducido = async (arrayFinal,pci,setValRed,setValRedCorregido,num)=>{
+const calculoValorReducido = async (arrayFinal,pci,setValRed,setValRedCorregido,num,setResultadoValDeducido)=>{
   let valoresReducidos=[]
   let valorReducidoTotal=[]
   let agrupado=[]
@@ -321,6 +321,20 @@ const calculoValorReducido = async (arrayFinal,pci,setValRed,setValRedCorregido,
     valorReducidoCorregido.push(VRCItem)
   })
   setValRedCorregido(valorReducidoCorregido)
+  
+  let copiaValorReducidoCorregido=_.cloneDeep(valorReducidoCorregido)
+  let resultadosValorDeducido=[]
+  copiaValorReducidoCorregido.forEach(item=>{
+    let max=0
+    let pciVal=0
+    let valorInsertar={}
+    max=Math.max(Math.max(...item.map(o => o.vrc)))
+    pciVal=100-max
+    Object.assign(valorInsertar,{vdc:Math.round(max*100)/100,pci:Math.round(pciVal*100)/100})
+    resultadosValorDeducido.push(valorInsertar)
+  })
+  console.log(resultadosValorDeducido)
+  setResultadoValDeducido(resultadosValorDeducido)
 }
 
 export{

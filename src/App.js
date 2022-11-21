@@ -13,11 +13,13 @@ import DashBoard from './Pages/DashBoard';
 import ValRedContext from './context/ValRedContext';
 import ValRedCorregidoContext from './context/ValRedCorregidoContext';
 import FormularioContext from './context/FormularioContext';
+import ResultadosValorDeducidoContext from './context/ResultadoValDeducidoContext';
 
 function App() {
   const [val, setval] = useState([])
   const [pci, setPci] = useState([])
   const [formulario, setFormulario] = useState([])
+  const [resultadoValDeducido, setResultadoValDeducido] = useState([])
   const [valRed, setValRed] = useState([])
   const [valRedCorregido, setValRedCorregido] = useState([])
   const [indice, setIndice] = useState(0)
@@ -29,26 +31,29 @@ function App() {
   return (
     <FormularioContext.Provider value={formulario}>
       <IndiceContext.Provider value={indice}>
-        <PciContext.Provider value={pci}>
-          <ValRedContext.Provider value={valRed}>
-            <ValRedCorregidoContext.Provider value={valRedCorregido}>
-              <DataExcelContext.Provider value={val}>
-                <BrowserRouter>
-                  <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/Login" element={<Login />} />
-                    <Route path="/Registro" element={<Register />} />
-                    <Route path="/Tramo" element={<Tramo />} />
-                    <Route path="/Evaluacion" element={<Evaluacion  />} >
-                      <Route path='Inicio' element= {<DatosEvaluacion setval={setval} setIndice={setIndice} setPci={setPci} setValRed={setValRed} setValRedCorregido={setValRedCorregido} setFormulario={setFormulario} />}/>
-                      <Route path='Calculo' element= {<DashBoard setIndice={setIndice} />}  />
-                    </Route>
-                  </Routes>
-                </BrowserRouter>
-              </DataExcelContext.Provider>
-            </ValRedCorregidoContext.Provider>
-          </ValRedContext.Provider>
-        </PciContext.Provider>
+        <ResultadosValorDeducidoContext.Provider value={resultadoValDeducido}>
+          <PciContext.Provider value={pci}>
+            <ValRedContext.Provider value={valRed}>
+              <ValRedCorregidoContext.Provider value={valRedCorregido}>
+                <DataExcelContext.Provider value={val}>
+                  <BrowserRouter>
+                    <Routes>
+                      <Route path="/" element={<Home />} />
+                      <Route path="/Login" element={<Login />} />
+                      <Route path="/Registro" element={<Register />} />
+                      <Route path="/Tramo" element={<Tramo />} />
+                      <Route path="/Evaluacion" element={<Evaluacion  />} >
+                        <Route path='Inicio' element= {<DatosEvaluacion setval={setval} setIndice={setIndice} setPci={setPci} setValRed={setValRed} setValRedCorregido={setValRedCorregido} setFormulario={setFormulario} setResultadoValDeducido={setResultadoValDeducido} />}/>
+                        <Route path='Calculo' element= {<DashBoard setIndice={setIndice} />}  />
+                      </Route>
+                    </Routes>
+                  </BrowserRouter>
+                </DataExcelContext.Provider>
+              </ValRedCorregidoContext.Provider>
+            </ValRedContext.Provider>
+          </PciContext.Provider>
+        </ResultadosValorDeducidoContext.Provider>
+        
       </IndiceContext.Provider>
     </FormularioContext.Provider>
     

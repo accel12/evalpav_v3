@@ -1,6 +1,12 @@
 import React from 'react'
+import { useEffect } from 'react'
+import useIndice from '../hooks/useIndice'
+import useResultadosValorDeducido from '../hooks/useResultadosValorDeducido'
 
 const ValorPCI = () => {
+    const indice=useIndice()
+    const ValorDeducidoTotal=useResultadosValorDeducido()
+
   return (
     <div className='mt-4 pb-2'>
         <div className=' w-full text-center justify-center mb-4 flex  bg-fondoPanel py-2 border-b border-black'>
@@ -74,12 +80,12 @@ const ValorPCI = () => {
             </div>
             <div>
                 <div className='flex mb-3'>
-                    <label className='w-16 font-bold text-2xl'>VRC</label>
-                    <div style={{height:'32'}} className='flex items-center bg-fondoItemsTabla rounded w-24 border border-black pl-2'>00.000</div>
+                    <label className='w-16 font-bold text-2xl'>VDC</label>
+                    <div style={{height:'32'}} className='flex items-center bg-fondoItemsTabla rounded w-24 border border-black  justify-center'>{ValorDeducidoTotal[indice].vdc}</div>
                 </div>
                 <div className='flex'>
                     <label className='w-16 font-bold text-2xl'>PCI</label>
-                    <div style={{height:'32'}} className='flex items-center bg-fondoItemsTabla rounded w-24 border border-black pl-2'>00.000</div>
+                    <div style={{height:'32'}} className='flex items-center bg-fondoItemsTabla rounded w-24 border border-black justify-center'>{ValorDeducidoTotal[indice].pci}</div>
                 </div>
             </div>
         </div>

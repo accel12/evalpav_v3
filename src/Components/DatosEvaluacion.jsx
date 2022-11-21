@@ -8,7 +8,7 @@ import Mapa from './Mapa'
 import '../styles/inicio.css'
 import { useEffect } from 'react'
 import usePci from '../hooks/usePci'
-const DatosEvaluacion = ({setval,setGlobal,setPci,setValRed,setValRedCorregido, setFormulario}) => {
+const DatosEvaluacion = ({setval,setGlobal,setPci,setValRed,setValRedCorregido, setFormulario, setResultadoValDeducido}) => {
     const navigate = useNavigate();
     const pci=usePci()
     const [cargaBrutaEstado, setCargaBrutaEstado] = useState(false)
@@ -53,7 +53,7 @@ const DatosEvaluacion = ({setval,setGlobal,setPci,setValRed,setValRedCorregido, 
         obtenerDataBruta(e,setDataBruta,setCargaBrutaEstado,setDataFormulario,dataFormulario)
     }
     const convertirv2=async(e)=>{
-        obtenerDatav2(dataBruta,dataFormulario.longitudMuestra,setval,pci,setValRed,setValRedCorregido)
+        obtenerDatav2(dataBruta,dataFormulario.longitudMuestra,setval,pci,setValRed,setValRedCorregido,setResultadoValDeducido)
     }
   return (
     <div className='flex space-x-3 mr-3'>

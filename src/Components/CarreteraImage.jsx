@@ -26,12 +26,15 @@ const CarreteraImage = ({data}) => {
   const dibujoFalla=(element,lista)=>{
     const canvas = canvasRef.current
     const falla = canvas.getContext('2d')
-    const valorM= convertirPxToMx(element.ProgresivaInicial, lista)
-    const valorMFin = convertirPxToMx(element.ProgresivaInicial+element.Longitud, lista)
+    const valorM= convertirPxToMx(element.ProgresivaInicial+element.Xfalla, lista)
+    const valorMFin = convertirPxToMx(element.ProgresivaInicial+element.Xfalla+element.Longitud, lista)
     const valorMy = convertirPxToMy(element.Ancho, lista)
     //Our first draw
+    console.log({valorM})
+    console.log({valorMFin})
+    console.log({valorMy})
     falla.strokeStyle = "black";
-    falla.rect(valorM, 179, valorMFin-valorM, -valorMy)
+    falla.rect(valorM, 10, valorMFin-valorM, valorMy)
     falla.stroke();
   }
   const convertirPxToMx=(valor, lista)=>{
