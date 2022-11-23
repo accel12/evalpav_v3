@@ -102,6 +102,7 @@ const obtenerDatav2=async(data,distancia,setval,pci,setValRed,setValRedCorregido
         nuevoArrayItem.ProgresivaInicial=clonItem.ProgresivaInicial
         nuevoArrayItem.ProgresivaFinal=inicioJuntado
         nuevoArrayItem.Longitud=nuevoArrayItem.ProgresivaFinal-nuevoArrayItem.ProgresivaInicial
+        nuevoArrayItem.Yfalla=0
         nuevosArray.push(nuevoArrayItem)
       }
     })
@@ -113,7 +114,6 @@ const obtenerDatav2=async(data,distancia,setval,pci,setValRed,setValRedCorregido
   arrayCombinado.sort((a, b) => {
     return a.ProgresivaInicial - b.ProgresivaInicial;
   });
-  console.log(arrayCombinado)
   //Volver a acoplar
   const arraySegmentadoInicio2=_.cloneDeep(arrayCombinado[0].ProgresivaInicial)
   const obtenerMayor2=obtenerNumeroMayor(arrayCombinado)
@@ -225,7 +225,6 @@ const calculoValorReducido = async (arrayFinal,pci,setValRed,setValRedCorregido,
       Object.assign(itemArmado,{Dano:item[0].Daño})
       Object.assign(itemArmado,{Severidad:item[0].Severidad})
       item.forEach(e=>{
-        console.log(e)
         if(e.Daño===4 || e.Daño===7 || e.Daño===8 || e.Daño===9 || e.Daño===10 || e.Daño===13){
           listaValores.push(e.Longitud)
           total=total+e.Longitud
@@ -333,7 +332,6 @@ const calculoValorReducido = async (arrayFinal,pci,setValRed,setValRedCorregido,
     Object.assign(valorInsertar,{vdc:Math.round(max*100)/100,pci:Math.round(pciVal*100)/100})
     resultadosValorDeducido.push(valorInsertar)
   })
-  console.log(resultadosValorDeducido)
   setResultadoValDeducido(resultadosValorDeducido)
 }
 
