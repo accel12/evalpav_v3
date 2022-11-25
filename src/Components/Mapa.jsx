@@ -16,34 +16,29 @@ L.Icon.Default.mergeOptions({
 });
 
 const Mapa = ({datos}) => {
-  const [posicion, setPosicion] = useState([])
+  const [posicion, setPosicion] = useState([0,0])
   const indice=useIndice()
   const data=useDataExcel()
   const mapRef = useRef();
   const markerRef = useRef();
   useEffect(() => {
     if(data.length!==0){
-      const marker=markerRef.current;
-      if(marker){
-        setPosicion([data[indice][0].InicioLatitud,data[indice][0].InicioLongitud])
-      }
+      setPosicion([data[indice][0].InicioLatitud,data[indice][0].InicioLongitud])
     }
   }, [])
   
   useEffect(() => {
     if(data.length!==0){
-      // const map=mapRef.current;
-      // console.log(map)
-      // if(map){
-      //   console.log(map)
-      //   map.flyTo([data[indice][0].InicioLatitud,data[indice][0].InicioLongitud], 15, {
-      //     duration: 2
-      //   });
-      // }
+      setPosicion([data[indice][0].InicioLatitud,data[indice][0].InicioLongitud])
       const marker=markerRef.current;
+      const map=mapRef.current;
       if(marker){
-        console.log(marker)
         marker.setLatLng([data[indice][0].InicioLatitud,data[indice][0].InicioLongitud])
+      }
+      if(map){
+        map.flyTo([data[indice][0].InicioLatitud,data[indice][0].InicioLongitud], 15, {
+          duration: 0
+        });
       }
     }
   }, [indice])
@@ -57,7 +52,7 @@ const Mapa = ({datos}) => {
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
-              <Marker ref={markerRef} position={[data[0][0].InicioLatitud,data[0][0].InicioLongitud]}>
+              <Marker ref={markerRef} position={posicion}>
                   <Popup>
                   A pretty CSS3 popup. <br /> Easily customizable.
                   </Popup>
