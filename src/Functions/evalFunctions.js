@@ -83,7 +83,6 @@ const obtenerDatav2=async(data,distancia,setval,pci,setValRed,setValRedCorregido
         nuevoArrayItem.ProgresivaFinal=clonItem.ProgresivaFinal
         nuevoArrayItem.Longitud=nuevoArrayItem.ProgresivaFinal-nuevoArrayItem.ProgresivaInicial
         nuevoArrayItem.Area=nuevoArrayItem.Longitud * nuevoArrayItem.Ancho
-        console.log(nuevoArrayItem)
         nuevosArray.push(nuevoArrayItem)
       }
       if(item.ProgresivaInicial<inicioJuntado){
@@ -94,7 +93,6 @@ const obtenerDatav2=async(data,distancia,setval,pci,setValRed,setValRedCorregido
         nuevoArrayItem.Longitud=nuevoArrayItem.ProgresivaFinal-nuevoArrayItem.ProgresivaInicial
         nuevoArrayItem.Area=nuevoArrayItem.Longitud * nuevoArrayItem.Ancho
         nuevoArrayItem.Yfalla=0
-        console.log(nuevoArrayItem)
         nuevosArray.push(nuevoArrayItem)
       }
     })
@@ -118,13 +116,14 @@ const obtenerDatav2=async(data,distancia,setval,pci,setValRed,setValRedCorregido
     ))
     items.map(item=>{
       if(item.ProgresivaFinal>FinalJuntado){
-        item.ProgresivaFinal=FinalJuntado
-        item.Longitud=FinalJuntado-item.ProgresivaInicial
-        item.Area=item.Longitud * item.Ancho
+        item.ProgresivaFinal=FinalJuntado   
       }
       if(item.ProgresivaInicial<inicioJuntado){
         item.ProgresivaInicial=inicioJuntado
       }
+      item.Longitud=item.ProgresivaFinal-item.ProgresivaInicial
+      item.Area=item.Longitud * item.Ancho
+      return item
     })
     arrayJuntado.push(items)
   }
