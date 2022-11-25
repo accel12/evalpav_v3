@@ -56,22 +56,10 @@ const obtenerDatav2=async(data,distancia,setval,pci,setValRed,setValRedCorregido
     let valorInicial=copiaItemArray.ProgresivaInicial
     let valorFinal=copiaItemArray.ProgresivaFinal
     let valorInicialIterable=valorInicial
-    let longitud=valorFinal-valorInicial
-    let valorFinalIterable=valorInicialIterable + num
     let cantidadDivisiones=Math.ceil((valorFinal-valorInicial)/num)
     for(let i=0;i<cantidadDivisiones;i++){
       let valorInsertar=_.cloneDeep(copiaItemArray)
-      if((valorFinalIterable + (num*i))>valorFinal){
-        valorInsertar.ProgresivaInicial=valorInicialIterable + (num*i)
-        valorInsertar.ProgresivaFinal=valorFinal
-        valorInsertar.Longitud=valorFinal-valorInsertar.ProgresivaInicial
-        valorInsertar.Area=copiaItemArray.Ancho*longitud
-      }else{
-        valorInsertar.ProgresivaInicial=valorInicialIterable + (num*i)
-        valorInsertar.ProgresivaFinal=valorFinalIterable + (num*i)
-        valorInsertar.Longitud=valorInsertar.ProgresivaFinal-valorInsertar.ProgresivaInicial
-        valorInsertar.Area=copiaItemArray.Ancho*(valorInsertar.ProgresivaFinal-valorInsertar.ProgresivaInicial)
-      }
+      valorInsertar.ProgresivaInicial=valorInicialIterable + (num*i)
       arraySegmentado.push(valorInsertar)
     }
   })
@@ -94,6 +82,8 @@ const obtenerDatav2=async(data,distancia,setval,pci,setValRed,setValRedCorregido
         nuevoArrayItem.ProgresivaInicial=FinalJuntado
         nuevoArrayItem.ProgresivaFinal=clonItem.ProgresivaFinal
         nuevoArrayItem.Longitud=nuevoArrayItem.ProgresivaFinal-nuevoArrayItem.ProgresivaInicial
+        nuevoArrayItem.Area=nuevoArrayItem.Longitud * nuevoArrayItem.Ancho
+        console.log(nuevoArrayItem)
         nuevosArray.push(nuevoArrayItem)
       }
       if(item.ProgresivaInicial<inicioJuntado){
@@ -102,7 +92,9 @@ const obtenerDatav2=async(data,distancia,setval,pci,setValRed,setValRedCorregido
         nuevoArrayItem.ProgresivaInicial=clonItem.ProgresivaInicial
         nuevoArrayItem.ProgresivaFinal=inicioJuntado
         nuevoArrayItem.Longitud=nuevoArrayItem.ProgresivaFinal-nuevoArrayItem.ProgresivaInicial
+        nuevoArrayItem.Area=nuevoArrayItem.Longitud * nuevoArrayItem.Ancho
         nuevoArrayItem.Yfalla=0
+        console.log(nuevoArrayItem)
         nuevosArray.push(nuevoArrayItem)
       }
     })
@@ -128,6 +120,7 @@ const obtenerDatav2=async(data,distancia,setval,pci,setValRed,setValRedCorregido
       if(item.ProgresivaFinal>FinalJuntado){
         item.ProgresivaFinal=FinalJuntado
         item.Longitud=FinalJuntado-item.ProgresivaInicial
+        item.Area=item.Longitud * item.Ancho
       }
       if(item.ProgresivaInicial<inicioJuntado){
         item.ProgresivaInicial=inicioJuntado
