@@ -90,8 +90,8 @@ const ValorReducido = () => {
                                             
                                                 {
                                                     items.Valores[0]!==undefined ?
-                                                    Math.round(items.Valores[0]*100)/100 :
-                                                    '0.00'
+                                                    Math.round(items.Valores[0]*10)/10 :
+                                                    ''
                                                 }
                                             
                                         </td>
@@ -99,8 +99,8 @@ const ValorReducido = () => {
                                             
                                                 {
                                                     items.Valores[1]!==undefined ?
-                                                    Math.round(items.Valores[1]*100)/100 :
-                                                    '0.00'
+                                                    Math.round(items.Valores[1]*10)/10 :
+                                                    ''
                                                 }
                                             
                                         </td>
@@ -108,8 +108,8 @@ const ValorReducido = () => {
                                             
                                                 {
                                                     items.Valores[2]!==undefined ?
-                                                    Math.round(items.Valores[2]*100)/100 :
-                                                    '0.00'
+                                                    Math.round(items.Valores[2]*10)/10 :
+                                                    ''
                                                 }
                                             
                                         </td>
@@ -117,8 +117,8 @@ const ValorReducido = () => {
                                             
                                                 {
                                                     items.Valores[3]!==undefined ?
-                                                    Math.round(items.Valores[3]*100)/100 :
-                                                    '0.00'
+                                                    Math.round(items.Valores[3]*10)/10 :
+                                                    ''
                                                 }
                                             
                                         </td>
@@ -126,8 +126,8 @@ const ValorReducido = () => {
                                             
                                                 {
                                                     items.Valores[4]!==undefined ?
-                                                    Math.round(items.Valores[4]*100)/100 :
-                                                    '0.00'
+                                                    Math.round(items.Valores[4]*10)/10 :
+                                                    ''
                                                 }
                                             
                                         </td>
@@ -135,8 +135,8 @@ const ValorReducido = () => {
                                             
                                                 {
                                                     items.Valores[5]!==undefined ?
-                                                    Math.round(items.Valores[5]*100)/100 :
-                                                    '0.00'
+                                                    Math.round(items.Valores[5]*10)/10 :
+                                                    ''
                                                 }
                                             
                                         </td>
@@ -144,8 +144,8 @@ const ValorReducido = () => {
                                             
                                                 {
                                                     items.Valores[6]!==undefined ?
-                                                    Math.round(items.Valores[6]*100)/100 :
-                                                    '0.00'
+                                                    Math.round(items.Valores[6]*10)/10 :
+                                                    ''
                                                 }
                                             
                                         </td>
@@ -153,8 +153,8 @@ const ValorReducido = () => {
                                             
                                                 {
                                                     items.Valores[7]!==undefined ?
-                                                    Math.round(items.Valores[7]*100)/100 :
-                                                    '0.00'
+                                                    Math.round(items.Valores[7]*10)/10 :
+                                                    ''
                                                 }
                                             
                                         </td>
@@ -162,8 +162,8 @@ const ValorReducido = () => {
                                             
                                                 {
                                                     items.Valores[8]!==undefined ?
-                                                    Math.round(items.Valores[8]*100)/100 :
-                                                    '0.00'
+                                                    Math.round(items.Valores[8]*10)/10 :
+                                                    ''
                                                 }
                                             
                                         </td>
@@ -171,22 +171,22 @@ const ValorReducido = () => {
                                             
                                                 {
                                                     items.Valores[9]!==undefined ?
-                                                    Math.round(items.Valores[9]*100)/100 :
-                                                    '0.00'
+                                                    Math.round(items.Valores[9]*10)/10 :
+                                                    ''
                                                 }
                                             
                                         </td>
                                         <td className='border border-black bg-fondoItemsTabla'>
                                             
                                             {
-                                                Math.round(items.Total*100)/100
+                                                Math.round(items.Total*10)/10
                                             }
                                             
                                         </td>
                                         <td className='border border-black bg-fondoItemsTabla'>
                                             
                                             {
-                                                Math.round(items.Densidad*100)/100
+                                                Math.round(items.Densidad*10)/10
                                             }
                                             
                                         </td>

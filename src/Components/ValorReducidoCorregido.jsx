@@ -46,16 +46,16 @@ const ValorReducidoCorregido = () => {
                                         <td className='border border-black bg-fondoItemsTabla'>
                                             {
                                                 items.listaVr[0]!==undefined ?
-                                                Math.round(items.listaVr[0]*100)/100 :
-                                                '0.00'
+                                                Math.round(items.listaVr[0]* 10)/10 :
+                                                ' '
                                             }
                                         </td>
                                         <td className='border border-black bg-fondoItemsTabla'>
                                             
                                                 {
                                                     items.listaVr[1]!==undefined ?
-                                                    Math.round(items.listaVr[1]*100)/100 :
-                                                    '0.00'
+                                                    Math.round(items.listaVr[1]* 10)/10 :
+                                                    ' '
                                                 }
                                             
                                         </td>
@@ -63,8 +63,8 @@ const ValorReducidoCorregido = () => {
                                             
                                                 {
                                                     items.listaVr[2]!==undefined ?
-                                                    Math.round(items.listaVr[2]*100)/100 :
-                                                    '0.00'
+                                                    Math.round(items.listaVr[2]* 10)/10 :
+                                                    ' '
                                                 }
                                             
                                         </td>
@@ -72,8 +72,8 @@ const ValorReducidoCorregido = () => {
                                             
                                                 {
                                                     items.listaVr[3]!==undefined ?
-                                                    Math.round(items.listaVr[3]*100)/100 :
-                                                    '0.00'
+                                                    Math.round(items.listaVr[3]* 10)/10 :
+                                                    ' '
                                                 }
                                             
                                         </td>
@@ -81,8 +81,8 @@ const ValorReducidoCorregido = () => {
                                             
                                                 {
                                                     items.listaVr[4]!==undefined ?
-                                                    Math.round(items.listaVr[4]*100)/100 :
-                                                    '0.00'
+                                                    Math.round(items.listaVr[4]* 10)/10 :
+                                                    ' '
                                                 }
                                             
                                         </td>
@@ -90,8 +90,8 @@ const ValorReducidoCorregido = () => {
                                             
                                                 {
                                                     items.listaVr[5]!==undefined ?
-                                                    Math.round(items.listaVr[5]*100)/100 :
-                                                    '0.00'
+                                                    Math.round(items.listaVr[5]* 10)/10 :
+                                                    ' '
                                                 }
                                             
                                         </td>
@@ -99,8 +99,8 @@ const ValorReducidoCorregido = () => {
                                             
                                                 {
                                                     items.listaVr[6]!==undefined ?
-                                                    Math.round(items.listaVr[6]*100)/100 :
-                                                    '0.00'
+                                                    Math.round(items.listaVr[6]* 10)/10 :
+                                                    ' '
                                                 }
                                             
                                         </td>
@@ -108,8 +108,8 @@ const ValorReducidoCorregido = () => {
                                             
                                                 {
                                                     items.listaVr[7]!==undefined ?
-                                                    Math.round(items.listaVr[7]*100)/100 :
-                                                    '0.00'
+                                                    Math.round(items.listaVr[7]* 10)/10 :
+                                                    ' '
                                                 }
                                             
                                         </td>
@@ -117,8 +117,8 @@ const ValorReducidoCorregido = () => {
                                             
                                                 {
                                                     items.listaVr[8]!==undefined ?
-                                                    Math.round(items.listaVr[8]*100)/100 :
-                                                    '0.00'
+                                                    Math.round(items.listaVr[8]* 10)/10 :
+                                                    ' '
                                                 }
                                             
                                         </td>
@@ -132,7 +132,7 @@ const ValorReducidoCorregido = () => {
                                         <td className='border border-black bg-fondoItemsTabla'>
                                             
                                                 {
-                                                    Math.round(items.q*100)/100
+                                                    Math.round(items.q* 10)/10
                                                 }
                                             
                                         </td>
