@@ -78,14 +78,19 @@ const ValorPCI = () => {
                     </div>
                 </div>
             </div>
-            <div>
-                <div className='flex mb-3'>
-                    <label className='w-16 font-bold text-2xl'>VDC</label>
-                    <div style={{height:'32'}} className='flex items-center bg-fondoItemsTabla rounded w-24 border border-black  justify-center'>{ValorDeducidoTotal[indice].vdc}</div>
+            <div className='flex'>
+                <div>
+                    <div className='flex mb-3'>
+                        <label className='w-16 font-bold text-2xl'>VDC</label>
+                        <div style={{height:'32'}} className='flex items-center bg-fondoItemsTabla rounded w-24 border border-black  justify-center'>{ValorDeducidoTotal[indice].vdc}</div>
+                    </div>
+                    <div className='flex'>
+                        <label className='w-16 font-bold text-2xl'>PCI</label>
+                        <div style={{height:'32'}} className='flex items-center bg-fondoItemsTabla rounded w-24 border border-black justify-center'>{ValorDeducidoTotal[indice].pci}</div>
+                    </div>
                 </div>
-                <div className='flex'>
-                    <label className='w-16 font-bold text-2xl'>PCI</label>
-                    <div style={{height:'32'}} className='flex items-center bg-fondoItemsTabla rounded w-24 border border-black justify-center'>{ValorDeducidoTotal[indice].pci}</div>
+                <div className='ml-3 flex items-center'>
+                    {ValorDeducidoTotal[indice].mensajePCI}
                 </div>
             </div>
         </div>

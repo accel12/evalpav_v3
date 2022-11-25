@@ -318,11 +318,29 @@ const calculoValorReducido = async (arrayFinal,pci,setValRed,setValRedCorregido,
   let resultadosValorDeducido=[]
   copiaValorReducidoCorregido.forEach(item=>{
     let max=0
+    let mensaje=""
     let pciVal=0
     let valorInsertar={}
     max=Math.max(Math.max(...item.map(o => o.vrc)))
     pciVal=100-max
-    Object.assign(valorInsertar,{vdc:Math.round(max*100)/100,pci:Math.round(pciVal*100)/100})
+    //Casos de texto
+    if(pciVal>=85){
+      mensaje="EXCELENTE"
+    }else if(pciVal>=70 && pciVal<85){
+      mensaje="MUY BUENO"
+    }else if(pciVal>=55 && pciVal<70){
+      mensaje="BUENO"
+    }else if(pciVal>=40 && pciVal<55){
+      mensaje="REGULAR"
+    }else if(pciVal>=25 && pciVal<40){
+      mensaje="POBRE"
+    }else if(pciVal>=10 && pciVal<25){
+      mensaje="MUY POBRE"
+    }else if(pciVal>=0 && pciVal<10){
+      mensaje="FALLADO"
+    }
+
+    Object.assign(valorInsertar,{vdc:Math.round(max*100)/100,pci:Math.round(pciVal*100)/100,mensajePCI:mensaje})
     resultadosValorDeducido.push(valorInsertar)
   })
   setResultadoValDeducido(resultadosValorDeducido)
