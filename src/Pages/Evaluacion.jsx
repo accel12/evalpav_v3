@@ -41,7 +41,7 @@ const Evaluacion = () => {
 
 
     return (
-        <div  className="bg-fondoPrincipal">
+        <div  className="bg-fondoPrincipal" style={{minWidth:'1280px'}}>
             <NavBar setValorNav={setValorNav} />
             <Outlet />
         </div>

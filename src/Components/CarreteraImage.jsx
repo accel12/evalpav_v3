@@ -32,14 +32,9 @@ const CarreteraImage = ({data}) => {
     
     const valorMYIni = convertirPxToMy(element.ProgresivaInicial, lista)
     const longitud = convertirPxToMy(element.ProgresivaInicial+element.Longitud , lista)
-    console.log({valorMYIni})
-    console.log({ancho})
-    console.log({longitud})
     //Our first draw
 
     falla.strokeStyle = "black";
-    // falla.rect(valorMXini, 10, valorMXFin-valorMXini, valorMYFin-valorMYIni)
-    console.log(valorMXini)
     falla.rect(valorMYIni,valorMXini,longitud-valorMYIni,ancho)
     falla.stroke();
   }

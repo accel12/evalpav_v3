@@ -69,10 +69,10 @@ const DashBoard = ({setIndice}) => {
   }
 
   return (
-    <div className=' px-5 min-w-[720px] text-white pb-2'>
+    <div className=' px-5 text-white pb-2' style={{minWidth:'1280px'}}>
       <div className='bg-fondoAlterno rounded-3xl w-full min-w-[720px]  scroll-smooth'>
         <div className='flex justify-center items-center'>
-          <div className=' flex items-center justify-center space-x-8  py-3 flex-wrap  min-w-[720px] max-w-[1080px]'>
+          <div className=' flex items-center justify-center space-x-8  py-3 flex-wrap' style={{minWidth:'1280px', maxWidth:'1280px'}}>
             <div className='flex items-center my-4'>
               <label className='mr-3 font-bold '>TRAMO:</label>
               <label className='pr-8 pl-2 bg-fondoTextoAlterno rounded-md text-black border border-black'>LA VICTORIA - SAN LUIS</label>
@@ -90,7 +90,7 @@ const DashBoard = ({setIndice}) => {
               <label className='pr-8 pl-2 bg-fondoTextoAlterno rounded-md text-black border border-black'>{
               (valorActual.length==0)?
               0
-              :valorActual[0].ProgresivaInicial
+              :Math.round(valorActual[0].ProgresivaInicial * 100)/100
               }</label>
             </div>
             <div className='flex items-center my-4'>
@@ -98,7 +98,7 @@ const DashBoard = ({setIndice}) => {
               <label className='pr-8 pl-2 bg-fondoTextoAlterno rounded-md text-black border border-black'>{
               (valorActual.length==0)?
               0
-              :valorActual[valorActual.length-1].ProgresivaFinal
+              :Math.round(valorActual[valorActual.length-1].ProgresivaFinal * 100)/100
               }</label>
             </div>
             <div className='flex items-center my-4'>
