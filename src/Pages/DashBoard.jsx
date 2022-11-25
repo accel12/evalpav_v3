@@ -79,7 +79,11 @@ const DashBoard = ({setIndice}) => {
             </div>
             <div className='flex items-center my-4'>
               <label className='mr-3 font-bold'>CARRIL:</label>
-              <label className='pr-8 pl-2 bg-fondoTextoAlterno rounded-md text-black border border-black'>{valorActual[0].Carril}</label>
+              <label className='pr-8 pl-2 bg-fondoTextoAlterno rounded-md text-black border border-black'>{
+              (valorActual.length==0)?
+              0
+              :valorActual[0].Carril
+              }</label>
             </div>
             <div className='flex items-center my-4'>
               <label className='mr-3 font-bold'>EVALUADOR:</label>
