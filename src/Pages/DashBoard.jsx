@@ -16,6 +16,7 @@ import ValorReducidoCorregido from '../Components/ValorReducidoCorregido'
 import searchIcon from '../Images/search.png'
 import ValorPCI from '../Components/ValorPCI'
 import useResultadosValorDeducido from '../hooks/useResultadosValorDeducido'
+import useFormulario from '../hooks/useFormulario'
 const DashBoard = ({setIndice}) => {
   const [valorActual, setValorActual] = useState([])
   const [progresivaBuscar, setProgresivaBuscar] = useState(0)
@@ -23,6 +24,7 @@ const DashBoard = ({setIndice}) => {
   const pci=usePci()
   const valorPCITotal=useResultadosValorDeducido
   const indice=useIndice()
+  const datosFormulario= useFormulario()
   const aumento=()=>{
     if(indice==data.length-1){
       setIndice(0)
@@ -102,7 +104,7 @@ const DashBoard = ({setIndice}) => {
               <label className='pr-8 pl-2 bg-fondoTextoAlterno rounded-md text-black border border-black'>{
               (valorActual.length==0)?
               0
-              :Math.round(valorActual[valorActual.length-1].ProgresivaFinal * 100)/100
+              :(Math.round(valorActual[0].ProgresivaInicial * 100)/100) + parseInt(datosFormulario.longitudMuestra)
               }</label>
             </div>
             <div className='flex items-center my-4'>
