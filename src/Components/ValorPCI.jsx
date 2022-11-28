@@ -89,7 +89,7 @@ const ValorPCI = () => {
                         <div style={{height:'32'}} className='flex items-center bg-fondoItemsTabla rounded w-24 border border-black justify-center'>{ValorDeducidoTotal[indice].pci}</div>
                     </div>
                 </div>
-                <div className='ml-3 flex items-center'>
+                <div className='ml-3 mb-1 flex items-end'>
                     {ValorDeducidoTotal[indice].mensajePCI}
                 </div>
             </div>

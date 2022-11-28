@@ -92,7 +92,7 @@ const CarreteraImage = ({data}) => {
     <div style={{marginTop:'20px'}} className="flex justify-center items-center">
       <div className='flex'>
         <div className="rotate-180 flex justify-center font-bold mr-3 pt-20" style={{ writingMode: 'vertical-rl', height:'190px' }}>
-          AREA DE CARRIL (m)
+          ANCHO DE CARRIL (m)
         </div>
         <div className='flex flex-col mr-2 justify-start items-start' style={{height:'190px'}}>
           <label style={{marginBottom:'17px', marginTop:'-42px'}}>{valoresAncho[0]}</label>
@@ -112,6 +112,9 @@ const CarreteraImage = ({data}) => {
           <label className="rotate-180 flex justify-end" style={{ writingMode: 'vertical-rl', marginTop:'5px', marginRight:'93px', height:'75px'  }} >{valores[4]}</label>
           <label className="rotate-180 flex justify-end" style={{ writingMode: 'vertical-rl', marginTop:'5px', marginRight:'93px', height:'75px'  }} >{valores[5]}</label>
           <label className="rotate-180 flex justify-end" style={{ writingMode: 'vertical-rl', marginTop:'5px', height:'75px'  }} >{valores[6]}</label>
+        </div>
+        <div className='flex justify-center font-bold'>
+          PROGRESIVAS (m)
         </div>
       </div>
     </div>
