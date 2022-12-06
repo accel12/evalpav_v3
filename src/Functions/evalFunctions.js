@@ -180,7 +180,7 @@ const obtenerDatav2=async(data,dataFormulario,setval,pci,setValRed,setValRedCorr
       return a.ProgresivaInicial - b.ProgresivaInicial;
     });
   //Se debe cambiar luego
-  let inicio=dataFormulario.pini
+  let inicio=parseInt(dataFormulario.pini)
 
   // Final
 
