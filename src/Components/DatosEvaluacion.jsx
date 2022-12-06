@@ -53,7 +53,7 @@ const DatosEvaluacion = ({setval,setGlobal,setPci,setValRed,setValRedCorregido, 
         obtenerDataBruta(e,setDataBruta,setCargaBrutaEstado,setDataFormulario,dataFormulario)
     }
     const convertirv2=async(e)=>{
-        obtenerDatav2(dataBruta,dataFormulario.longitudMuestra,setval,pci,setValRed,setValRedCorregido,setResultadoValDeducido)
+        obtenerDatav2(dataBruta,dataFormulario,setval,pci,setValRed,setValRedCorregido,setResultadoValDeducido)
     }
   return (
     <div className='flex space-x-3 mr-3'>

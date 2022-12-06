@@ -168,19 +168,19 @@ const obtenerIntervalos=(inicio,fallaFinal,distancia)=>{
 //   calculoValorReducido(arrayFinal,pci,setValRed,setValRedCorregido,num,setResultadoValDeducido)
 // }
 
-const obtenerDatav2=async(data,distancia,setval,pci,setValRed,setValRedCorregido,setResultadoValDeducido)=>{
+const obtenerDatav2=async(data,dataFormulario,setval,pci,setValRed,setValRedCorregido,setResultadoValDeducido)=>{
   let arrayImportado=_.cloneDeep(data)
-
+  console.log(dataFormulario.pini)
   // obtener intervalos segmentacion
   let intervalos=[]
-  let longitud= parseInt(distancia)
+  let longitud= parseInt(dataFormulario.longitudMuestra)
 
   // Ordenar array
   let arrayOrdenado=arrayImportado.sort((a, b) => {
       return a.ProgresivaInicial - b.ProgresivaInicial;
     });
   //Se debe cambiar luego
-  let inicio=0
+  let inicio=dataFormulario.pini
 
   // Final
 
