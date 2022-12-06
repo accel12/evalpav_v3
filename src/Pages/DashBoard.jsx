@@ -104,7 +104,7 @@ const DashBoard = ({setIndice}) => {
               <label className='pr-8 pl-2 bg-fondoTextoAlterno rounded-md text-black border border-black'>{
               (valorActual.length==0)?
               0
-              :(Math.round(valorActual[0].ProgresivaInicial * 100)/100) + parseInt(datosFormulario.longitudMuestra)
+              : Math.round((valorActual[0].ProgresivaInicial  + parseInt(datosFormulario.longitudMuestra)) * 100) / 100
               }</label>
             </div>
             <div className='flex items-center my-4'>
@@ -128,7 +128,7 @@ const DashBoard = ({setIndice}) => {
           <div className='h-6 flex items-center '>
             <button style={{height:25, width:25}}><img src={Menos} style={{height:25, width:25}} onClick={disminucion} /></button>
             <label className='mr-4 '>MUESTRA:</label>
-            <label className='pr-8 pl-2 mr-4 bg-white text-black'>{indice}</label>
+            <label className='pr-8 pl-2 mr-4 bg-white text-black'>{indice+1}</label>
             <label className=' w-20'>DE {data.length}</label>
             <button style={{height:25, width:25}}><img src={Mas} style={{height:25, width:25}} onClick={aumento} /></button>
           </div>

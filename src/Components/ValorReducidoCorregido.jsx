@@ -43,14 +43,14 @@ const ValorReducidoCorregido = () => {
                             {
                                 dataValCorregido[indice].map((items,i,lista)=>(
                                     <tr className=' text-center celdaConBorde'>
-                                        <td className='border border-black bg-fondoItemsTabla'>
+                                        <td className='border border-black bg-fondoItemsTabla' style={{maxWidth:'4px'}}>
                                             {
                                                 items.listaVr[0]!==undefined ?
                                                 Math.round(items.listaVr[0]* 10)/10 :
                                                 ' '
                                             }
                                         </td>
-                                        <td className='border border-black bg-fondoItemsTabla'>
+                                        <td className='border border-black bg-fondoItemsTabla' style={{maxWidth:'4px'}}>
                                             
                                                 {
                                                     items.listaVr[1]!==undefined ?
@@ -59,7 +59,7 @@ const ValorReducidoCorregido = () => {
                                                 }
                                             
                                         </td>
-                                        <td className='border border-black bg-fondoItemsTabla'>
+                                        <td className='border border-black bg-fondoItemsTabla' style={{maxWidth:'4px'}}>
                                             
                                                 {
                                                     items.listaVr[2]!==undefined ?
@@ -68,7 +68,7 @@ const ValorReducidoCorregido = () => {
                                                 }
                                             
                                         </td>
-                                        <td className='border border-black bg-fondoItemsTabla'>
+                                        <td className='border border-black bg-fondoItemsTabla' style={{maxWidth:'4px'}}>
                                             
                                                 {
                                                     items.listaVr[3]!==undefined ?
@@ -77,7 +77,7 @@ const ValorReducidoCorregido = () => {
                                                 }
                                             
                                         </td>
-                                        <td className='border border-black bg-fondoItemsTabla'>
+                                        <td className='border border-black bg-fondoItemsTabla' style={{maxWidth:'4px'}}>
                                             
                                                 {
                                                     items.listaVr[4]!==undefined ?
@@ -86,7 +86,7 @@ const ValorReducidoCorregido = () => {
                                                 }
                                             
                                         </td>
-                                        <td className='border border-black bg-fondoItemsTabla'>
+                                        <td className='border border-black bg-fondoItemsTabla' style={{maxWidth:'4px'}}>
                                             
                                                 {
                                                     items.listaVr[5]!==undefined ?
@@ -95,7 +95,7 @@ const ValorReducidoCorregido = () => {
                                                 }
                                             
                                         </td>
-                                        <td className='border border-black bg-fondoItemsTabla'>
+                                        <td className='border border-black bg-fondoItemsTabla' style={{maxWidth:'4px'}}>
                                             
                                                 {
                                                     items.listaVr[6]!==undefined ?
@@ -104,7 +104,7 @@ const ValorReducidoCorregido = () => {
                                                 }
                                             
                                         </td>
-                                        <td className='border border-black bg-fondoItemsTabla'>
+                                        <td className='border border-black bg-fondoItemsTabla' style={{maxWidth:'4px'}}>
                                             
                                                 {
                                                     items.listaVr[7]!==undefined ?
@@ -113,7 +113,7 @@ const ValorReducidoCorregido = () => {
                                                 }
                                             
                                         </td>
-                                        <td className='border border-black bg-fondoItemsTabla'>
+                                        <td className='border border-black bg-fondoItemsTabla' style={{maxWidth:'4px'}}>
                                             
                                                 {
                                                     items.listaVr[8]!==undefined ?
@@ -122,21 +122,21 @@ const ValorReducidoCorregido = () => {
                                                 }
                                             
                                         </td>
-                                        <td className='border border-black bg-fondoItemsTabla'>
+                                        <td className='border border-black bg-fondoItemsTabla' style={{maxWidth:'4px'}}>
                                             
                                                 {
                                                     Math.round(items.total*10)/10
                                                 }
                                             
                                         </td>
-                                        <td className='border border-black bg-fondoItemsTabla'>
-                                            
+                                        <td className='border border-black bg-fondoItemsTabla' style={{maxWidth:'4px'}}>
+                                             
                                                 {
                                                     Math.round(items.q* 10)/10
                                                 }
                                             
                                         </td>
-                                        <td className='border border-black bg-fondoItemsTabla'>
+                                        <td className='border border-black bg-fondoItemsTabla' style={{maxWidth:'4px'}}>
                                             
                                                 {
                                                     Math.round(items.vrc*10)/10

@@ -36,120 +36,240 @@ const obtenerNumeroMayor=(array)=>{
   return mayor
 }
 
-const obtenerDatav2=async(data,distancia,setval,pci,setValRed,setValRedCorregido,setResultadoValDeducido)=>{
-  let arrayImportado=[...data]  
-  let arraySegmentado=[]
-  let num=parseInt(distancia)
-  let inicio=data[0].ProgresivaInicial
-  let intervalos=0
-  let arrayJuntado=[]
-
-
-  let arrayOrdenado=arrayImportado.sort((a, b) => {
-        return a.ProgresivaInicial - b.ProgresivaInicial;
-      });
-  
-  //Creando nuevo array
-
-  arrayOrdenado.map(itemArray=>{
-    let copiaItemArray=_.cloneDeep(itemArray)
-    let valorInicial=copiaItemArray.ProgresivaInicial
-    let valorFinal=copiaItemArray.ProgresivaFinal
-    let valorInicialIterable=valorInicial
-    let cantidadDivisiones=Math.ceil((valorFinal-valorInicial)/num)
-    for(let i=0;i<cantidadDivisiones;i++){
-      let valorInsertar=_.cloneDeep(copiaItemArray)
-      valorInsertar.ProgresivaInicial=valorInicialIterable + (num*i)
-      arraySegmentado.push(valorInsertar)
-    }
-  })
-  let clonArraySegmentado=_.cloneDeep(arraySegmentado)
-  let nuevosArray=[]
-  // acoplar por tamano
-  const arraySegmentadoInicio=_.cloneDeep(arraySegmentado[0].ProgresivaInicial)
-  const obtenerMayor=obtenerNumeroMayor(arraySegmentado)
-  const nuevaDivision=Math.ceil((obtenerMayor-arraySegmentadoInicio)/num)
-  for(let i=0;i<nuevaDivision;i++){
-    let inicioJuntado= arraySegmentadoInicio + num*i
-    let FinalJuntado= arraySegmentadoInicio + num*(i+1)
-    let items=_.cloneDeep(arraySegmentado.filter(limite=>
-      limite.ProgresivaInicial >= inicioJuntado && limite.ProgresivaInicial < FinalJuntado 
-    ))
-    items.forEach(item=>{
-      let clonItem=_.cloneDeep(item)
-      if(item.ProgresivaFinal>FinalJuntado){
-        let nuevoArrayItem=_.cloneDeep(item)
-        nuevoArrayItem.ProgresivaInicial=FinalJuntado
-        nuevoArrayItem.ProgresivaFinal=clonItem.ProgresivaFinal
-        nuevoArrayItem.Longitud=nuevoArrayItem.ProgresivaFinal-nuevoArrayItem.ProgresivaInicial
-        nuevoArrayItem.Area=nuevoArrayItem.Longitud * nuevoArrayItem.Ancho
-        nuevosArray.push(nuevoArrayItem)
-      }
-      if(item.ProgresivaInicial<inicioJuntado){
-        item.ProgresivaInicial=inicioJuntado
-        let nuevoArrayItem=_.cloneDeep(item)
-        nuevoArrayItem.ProgresivaInicial=clonItem.ProgresivaInicial
-        nuevoArrayItem.ProgresivaFinal=inicioJuntado
-        nuevoArrayItem.Longitud=nuevoArrayItem.ProgresivaFinal-nuevoArrayItem.ProgresivaInicial
-        nuevoArrayItem.Area=nuevoArrayItem.Longitud * nuevoArrayItem.Ancho
-        nuevoArrayItem.Yfalla=0
-        nuevosArray.push(nuevoArrayItem)
-      }
-    })
+const obtenerIntervalos=(inicio,fallaFinal,distancia)=>{
+  let valorFinal=inicio
+  let intervalos=[]
+  while(valorFinal<fallaFinal){
+    let itemArmado={}
+    let finalVirtual=valorFinal+distancia
+    Object.assign(itemArmado,{inicio:valorFinal,fin:finalVirtual})
+    intervalos.push(itemArmado)
+    valorFinal=valorFinal+distancia
   }
-  // juntando arrays
-  let arrayCombinado=clonArraySegmentado.concat(nuevosArray)
+  return intervalos
+}
 
-  //reordenando array juntado
-  arrayCombinado.sort((a, b) => {
+// const obtenerDatav2=async(data,distancia,setval,pci,setValRed,setValRedCorregido,setResultadoValDeducido)=>{
+//   let arrayImportado=[...data]  
+//   let arraySegmentado=[]
+//   let num=parseInt(distancia)
+//   // let inicio=data[0].ProgresivaInicial
+//   let inicio=0
+//   let intervalos=0
+//   let arrayJuntado=[]
+
+
+//   let arrayOrdenado=arrayImportado.sort((a, b) => {
+//         return a.ProgresivaInicial - b.ProgresivaInicial;
+//       });
+  
+//   //Creando nuevo array
+
+//   arrayOrdenado.map(itemArray=>{
+//     let copiaItemArray=_.cloneDeep(itemArray)
+//     let valorInicial=copiaItemArray.ProgresivaInicial
+//     let valorFinal=copiaItemArray.ProgresivaFinal
+//     let valorInicialIterable=valorInicial
+//     let cantidadDivisiones=Math.ceil((valorFinal-valorInicial)/num)
+//     for(let i=0;i<cantidadDivisiones;i++){
+//       let valorInsertar=_.cloneDeep(copiaItemArray)
+//       valorInsertar.ProgresivaInicial=valorInicialIterable + (num*i)
+//       arraySegmentado.push(valorInsertar)
+//     }
+//   })
+//   let clonArraySegmentado=_.cloneDeep(arraySegmentado)
+//   let nuevosArray=[]
+//   // acoplar por tamano
+//   // const arraySegmentadoInicio=_.cloneDeep(arraySegmentado[0].ProgresivaInicial)
+//   const arraySegmentadoInicio=inicio
+//   const obtenerMayor=obtenerNumeroMayor(arraySegmentado)
+//   const nuevaDivision=Math.ceil((obtenerMayor-arraySegmentadoInicio)/num)
+//   for(let i=0;i<nuevaDivision;i++){
+//     let inicioJuntado= arraySegmentadoInicio + num*i
+//     let FinalJuntado= arraySegmentadoInicio + num*(i+1)
+//     let items=_.cloneDeep(arraySegmentado.filter(limite=>
+//       limite.ProgresivaInicial >= inicioJuntado && limite.ProgresivaInicial < FinalJuntado 
+//     ))
+//     items.forEach(item=>{
+//       let clonItem=_.cloneDeep(item)
+//       if(item.ProgresivaFinal>FinalJuntado){
+//         let nuevoArrayItem=_.cloneDeep(item)
+//         nuevoArrayItem.ProgresivaInicial=FinalJuntado
+//         nuevoArrayItem.ProgresivaFinal=clonItem.ProgresivaFinal
+//         nuevoArrayItem.Longitud=nuevoArrayItem.ProgresivaFinal-nuevoArrayItem.ProgresivaInicial
+//         nuevoArrayItem.Area=nuevoArrayItem.Longitud * nuevoArrayItem.Ancho
+//         nuevosArray.push(nuevoArrayItem)
+//       }
+//       if(item.ProgresivaInicial<inicioJuntado){
+//         item.ProgresivaInicial=inicioJuntado
+//         let nuevoArrayItem=_.cloneDeep(item)
+//         nuevoArrayItem.ProgresivaInicial=clonItem.ProgresivaInicial
+//         nuevoArrayItem.ProgresivaFinal=inicioJuntado
+//         nuevoArrayItem.Longitud=nuevoArrayItem.ProgresivaFinal-nuevoArrayItem.ProgresivaInicial
+//         nuevoArrayItem.Area=nuevoArrayItem.Longitud * nuevoArrayItem.Ancho
+//         nuevoArrayItem.Yfalla=0
+//         nuevosArray.push(nuevoArrayItem)
+//       }
+//     })
+//   }
+//   console.log(nuevosArray)
+//   // juntando arrays
+//   let arrayCombinado=clonArraySegmentado.concat(nuevosArray)
+
+//   //reordenando array juntado
+//   arrayCombinado.sort((a, b) => {
+//     return a.ProgresivaInicial - b.ProgresivaInicial;
+//   });
+//   //Volver a acoplar
+//   const arraySegmentadoInicio2=_.cloneDeep(arrayCombinado[0].ProgresivaInicial)
+//   const obtenerMayor2=obtenerNumeroMayor(arrayCombinado)
+//   const nuevaDivision2=Math.ceil((obtenerMayor2-arraySegmentadoInicio2)/num)
+//   for(let i=0;i<nuevaDivision2;i++){
+//     let inicioJuntado= arraySegmentadoInicio2 + num*i
+//     let FinalJuntado= arraySegmentadoInicio2 + num*(i+1)
+//     let items=_.cloneDeep(arrayCombinado.filter(limite=>
+//       limite.ProgresivaInicial >= inicioJuntado && limite.ProgresivaInicial < FinalJuntado 
+//     ))
+//     items.map(item=>{
+//       if(item.ProgresivaFinal>FinalJuntado){
+//         item.ProgresivaFinal=FinalJuntado   
+//       }
+//       if(item.ProgresivaInicial<inicioJuntado){
+//         item.ProgresivaInicial=inicioJuntado
+//       }
+//       item.Longitud=item.ProgresivaFinal-item.ProgresivaInicial
+//       item.Area=item.Longitud * item.Ancho
+//       return item
+//     })
+//     arrayJuntado.push(items)
+//   }
+
+//   // eliminar array vacios
+//   let arrayFinal= []
+//   arrayJuntado.forEach(items=>{
+//     if (items.length>0){
+//       arrayFinal.push(items)
+//     }
+//   })
+//   arrayFinal.forEach(items=>{
+//     items.map(item=>{
+//       item.DS=item.Daño+item.Severidad
+//       item.AreaMuestra=num*item.AnchoDeCarril
+//       return item
+//     })
+//   })
+//   arrayFinal.forEach((items)=>{
+//     items.map((item,i,lista)=>{
+//       item.Yfalla=Math.round((item.ProgresivaInicial - lista[0].ProgresivaInicial)*100)/100
+//       return item
+//     })
+//   })
+//   setval(arrayFinal)
+//   calculoValorReducido(arrayFinal,pci,setValRed,setValRedCorregido,num,setResultadoValDeducido)
+// }
+
+const obtenerDatav2=async(data,distancia,setval,pci,setValRed,setValRedCorregido,setResultadoValDeducido)=>{
+  let arrayImportado=_.cloneDeep(data)
+
+  // obtener intervalos segmentacion
+  let intervalos=[]
+  let longitud= parseInt(distancia)
+
+  // Ordenar array
+  let arrayOrdenado=arrayImportado.sort((a, b) => {
+      return a.ProgresivaInicial - b.ProgresivaInicial;
+    });
+  //Se debe cambiar luego
+  let inicio=0
+
+  // Final
+
+  intervalos=obtenerIntervalos(inicio,arrayOrdenado[arrayOrdenado.length-1].ProgresivaFinal,longitud)
+  
+  // juntar por intervalos
+  let itemsJuntados=[]
+  let nuevoArray=_.cloneDeep(arrayOrdenado)
+  for(let i=0; i<intervalos.length;i++){
+    let copiaNuevoArray = _.cloneDeep(nuevoArray)
+    let resultadoFiltrado = copiaNuevoArray.filter(limites=>
+      limites.ProgresivaInicial >= intervalos[i].inicio && limites.ProgresivaInicial < intervalos[i].fin
+    )
+    if(resultadoFiltrado.length !== 0){
+      itemsJuntados.push(resultadoFiltrado)
+    } 
+  }
+  
+  // cortado
+  let itemsCortados=[]
+  let itemsAjustados=[]
+  let itemsAcoplados=[]
+  intervalos.forEach((limites)=>{
+    let copiaItemsJuntados=_.cloneDeep(itemsJuntados)
+    let arrayObtenido=copiaItemsJuntados.filter(item=>
+      item[0].ProgresivaInicial >= limites.inicio && item[0].ProgresivaInicial< limites.fin
+    )
+    
+    if(arrayObtenido.length !== 0 ){
+      let arrayObtenidoRes=_.cloneDeep(arrayObtenido[0])
+      if(arrayObtenidoRes[arrayObtenidoRes.length-1].ProgresivaFinal > limites.fin){
+        let copiaModificada=_.cloneDeep(arrayObtenidoRes)
+        let cortado=_.cloneDeep(arrayObtenidoRes[arrayObtenidoRes.length-1])
+        // Ajuste por corte
+        copiaModificada[arrayObtenidoRes.length-1].ProgresivaFinal = limites.fin
+        copiaModificada[arrayObtenidoRes.length-1].Longitud = limites.fin - copiaModificada[arrayObtenidoRes.length-1].ProgresivaInicial
+        copiaModificada[arrayObtenidoRes.length-1].Area = copiaModificada[arrayObtenidoRes.length-1].Longitud * copiaModificada[arrayObtenidoRes.length-1].Ancho
+
+        cortado.ProgresivaInicial = limites.fin
+        cortado.Longitud = cortado.ProgresivaFinal - limites.fin
+        cortado.Area =  cortado.Longitud * cortado.Ancho
+        cortado.Yfalla = 0
+        itemsAjustados.push(copiaModificada)
+        itemsCortados.push(cortado)
+      }else{
+        itemsAjustados.push(arrayObtenidoRes)
+      }
+    }
+    
+  })
+
+  // Separando grupos
+  let desagrupados = []
+  itemsAjustados.forEach(items=>{
+    items.forEach(item=>{
+      desagrupados.push(item)
+    })
+  })
+  itemsAcoplados = desagrupados.concat(itemsCortados)
+  
+  // Ordenar array
+  let itemsAcopladosOrdenado=itemsAcoplados.sort((a, b) => {
     return a.ProgresivaInicial - b.ProgresivaInicial;
   });
-  //Volver a acoplar
-  const arraySegmentadoInicio2=_.cloneDeep(arrayCombinado[0].ProgresivaInicial)
-  const obtenerMayor2=obtenerNumeroMayor(arrayCombinado)
-  const nuevaDivision2=Math.ceil((obtenerMayor2-arraySegmentadoInicio2)/num)
-  for(let i=0;i<nuevaDivision2;i++){
-    let inicioJuntado= arraySegmentadoInicio2 + num*i
-    let FinalJuntado= arraySegmentadoInicio2 + num*(i+1)
-    let items=_.cloneDeep(arrayCombinado.filter(limite=>
-      limite.ProgresivaInicial >= inicioJuntado && limite.ProgresivaInicial < FinalJuntado 
-    ))
-    items.map(item=>{
-      if(item.ProgresivaFinal>FinalJuntado){
-        item.ProgresivaFinal=FinalJuntado   
-      }
-      if(item.ProgresivaInicial<inicioJuntado){
-        item.ProgresivaInicial=inicioJuntado
-      }
-      item.Longitud=item.ProgresivaFinal-item.ProgresivaInicial
-      item.Area=item.Longitud * item.Ancho
-      return item
-    })
-    arrayJuntado.push(items)
+
+  // volviendo agrupar
+  let itemsReagrupados = []
+  for(let i=0; i<intervalos.length;i++){
+    let copiaNuevoArray = _.cloneDeep(itemsAcopladosOrdenado)
+    let NuevoResultadoFiltrado = copiaNuevoArray.filter(limites=>
+      limites.ProgresivaInicial >= intervalos[i].inicio && limites.ProgresivaInicial < intervalos[i].fin
+    )
+    if(NuevoResultadoFiltrado.length !== 0){
+      itemsReagrupados.push(NuevoResultadoFiltrado)
+    } 
   }
 
-  // eliminar array vacios
-  let arrayFinal= []
-  arrayJuntado.forEach(items=>{
-    if (items.length>0){
-      arrayFinal.push(items)
-    }
-  })
+  //final
+  let arrayFinal=_.cloneDeep(itemsReagrupados)
   arrayFinal.forEach(items=>{
     items.map(item=>{
       item.DS=item.Daño+item.Severidad
-      item.AreaMuestra=num*item.AnchoDeCarril
-      return item
-    })
-  })
-  arrayFinal.forEach((items)=>{
-    items.map((item,i,lista)=>{
-      item.Yfalla=Math.round((item.ProgresivaInicial - lista[0].ProgresivaInicial)*100)/100
+      item.AreaMuestra=longitud*item.AnchoDeCarril
+      item.Yfalla = Math.round((item.ProgresivaInicial - items[0].ProgresivaInicial)*100)/100
       return item
     })
   })
   setval(arrayFinal)
-  calculoValorReducido(arrayFinal,pci,setValRed,setValRedCorregido,num,setResultadoValDeducido)
+  calculoValorReducido(arrayFinal,pci,setValRed,setValRedCorregido,longitud,setResultadoValDeducido)
 }
 
 const calculoValorReducido = async (arrayFinal,pci,setValRed,setValRedCorregido,num,setResultadoValDeducido)=>{
