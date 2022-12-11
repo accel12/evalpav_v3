@@ -1,0 +1,4 @@
+.listaFallas li:hover{
+    color: #006494;
+    cursor: pointer;
+}
