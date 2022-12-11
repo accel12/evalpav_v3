@@ -96,7 +96,7 @@ const DashBoard = ({setIndice}) => {
               <label className='pr-8 pl-2 bg-fondoTextoAlterno rounded-md text-black border border-black'>{
               (valorActual.length==0)?
               0
-              :Math.round(valorActual[0].ProgresivaInicial * 100)/100
+              :Math.round(valorActual[0].inicio * 100)/100
               }</label>
             </div>
             <div className='flex items-center my-4'>
@@ -104,7 +104,7 @@ const DashBoard = ({setIndice}) => {
               <label className='pr-8 pl-2 bg-fondoTextoAlterno rounded-md text-black border border-black'>{
               (valorActual.length==0)?
               0
-              : Math.round((valorActual[0].ProgresivaInicial  + parseInt(datosFormulario.longitudMuestra)) * 100) / 100
+              : Math.round((valorActual[0].fin) * 100) / 100
               }</label>
             </div>
             <div className='flex items-center my-4'>

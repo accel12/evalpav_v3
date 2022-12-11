@@ -24,12 +24,12 @@ const CarreteraImage = ({data}) => {
     lineaAmarilla.fillRect(-10,180,720, 10)
   }
   const dibujoFalla=(element,lista)=>{
-    const valorxCero=lista[0].ProgresivaInicial
+    const valorxCero=lista[0].inicio
     const canvas = canvasRef.current
     const falla = canvas.getContext('2d')
     const valorMXini= convertirPxToMx(element.Xfalla, lista)
     const ancho = convertirPxToMx(element.Ancho, lista)
-    
+    console.log(element)
     const valorMYIni = convertirPxToMy(element.ProgresivaInicial, lista)
     const longitud = convertirPxToMy(element.ProgresivaInicial+element.Longitud , lista)
     //Our first draw
@@ -49,7 +49,7 @@ const CarreteraImage = ({data}) => {
   const convertirPxToMy=(valor, lista)=>{
     let largoM=parseInt(dataFormulario.longitudMuestra)
     let largoPx=700
-    let valIni=lista[0].ProgresivaInicial
+    let valIni=lista[0].inicio
     let pxmetro=largoPx/largoM
     let calculo=pxmetro*(valor-valIni)
     return calculo
@@ -61,7 +61,8 @@ const CarreteraImage = ({data}) => {
     let divisor=largoM/6
     let divisorAncho=data[0].AnchoDeCarril/4
     for(let i=0;i<=6;i++){
-      let value=data[0].ProgresivaInicial+divisor*i
+      console.log(data[0])
+      let value=data[0].inicio+divisor*i
       listado.push(Math.round(value*100)/100)
     }
     for(let i=4;i>=0;i--){
@@ -95,7 +96,7 @@ const CarreteraImage = ({data}) => {
           ANCHO DE CARRIL (m)
         </div>
         <div className='flex flex-col mr-2 justify-start items-start' style={{height:'190px'}}>
-          <label style={{marginBottom:'17px', marginTop:'-42px'}}>{valoresAncho[0]}</label>
+          <label style={{marginBottom:'17px', marginTop:'-52px'}}>{valoresAncho[0]}</label>
           <label style={{marginBottom:'17px'}}>{valoresAncho[1]}</label>
           <label style={{marginBottom:'17px'}}>{valoresAncho[2]}</label>
           <label style={{marginBottom:'17px'}}>{valoresAncho[3]}</label>

@@ -170,7 +170,6 @@ const obtenerIntervalos=(inicio,fallaFinal,distancia)=>{
 
 const obtenerDatav2=async(data,dataFormulario,setval,pci,setValRed,setValRedCorregido,setResultadoValDeducido)=>{
   let arrayImportado=_.cloneDeep(data)
-  console.log(dataFormulario.pini)
   // obtener intervalos segmentacion
   let intervalos=[]
   let longitud= parseInt(dataFormulario.longitudMuestra)
@@ -218,6 +217,7 @@ const obtenerDatav2=async(data,dataFormulario,setval,pci,setValRed,setValRedCorr
         copiaModificada[arrayObtenidoRes.length-1].ProgresivaFinal = limites.fin
         copiaModificada[arrayObtenidoRes.length-1].Longitud = limites.fin - copiaModificada[arrayObtenidoRes.length-1].ProgresivaInicial
         copiaModificada[arrayObtenidoRes.length-1].Area = copiaModificada[arrayObtenidoRes.length-1].Longitud * copiaModificada[arrayObtenidoRes.length-1].Ancho
+        
 
         cortado.ProgresivaInicial = limites.fin
         cortado.Longitud = cortado.ProgresivaFinal - limites.fin
@@ -254,13 +254,17 @@ const obtenerDatav2=async(data,dataFormulario,setval,pci,setValRed,setValRedCorr
       limites.ProgresivaInicial >= intervalos[i].inicio && limites.ProgresivaInicial < intervalos[i].fin
     )
     if(NuevoResultadoFiltrado.length !== 0){
+      NuevoResultadoFiltrado[0].inicio=intervalos[i].inicio
+      NuevoResultadoFiltrado[0].fin=intervalos[i].fin
       itemsReagrupados.push(NuevoResultadoFiltrado)
     } 
   }
 
   //final
   let arrayFinal=_.cloneDeep(itemsReagrupados)
+  console.log(itemsReagrupados)
   arrayFinal.forEach(items=>{
+    console.log(items)
     items.map(item=>{
       item.DS=item.Daño+item.Severidad
       item.AreaMuestra=longitud*item.AnchoDeCarril
@@ -269,6 +273,7 @@ const obtenerDatav2=async(data,dataFormulario,setval,pci,setValRed,setValRedCorr
     })
   })
   setval(arrayFinal)
+  console.log(arrayFinal)
   calculoValorReducido(arrayFinal,pci,setValRed,setValRedCorregido,longitud,setResultadoValDeducido)
 }
 
