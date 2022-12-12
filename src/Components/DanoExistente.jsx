@@ -29,9 +29,9 @@ const DanoExistente = () => {
                             <th className='border border-black  bg-fondoHeader'>
                                 x
                             </th>
-                            <th className='border border-black  bg-fondoHeader'>
+                            {/* <th className='border border-black  bg-fondoHeader'>
                                 y
-                            </th>
+                            </th> */}
                             <th className='border border-black  bg-fondoHeader'>
                                 ANCHO
                             </th>
@@ -62,9 +62,9 @@ const DanoExistente = () => {
                                     <td className='border border-black  bg-fondoItemsTabla'>
                                         {items.Xfalla}
                                     </td>
-                                    <td className='border border-black  bg-fondoItemsTabla'>
+                                    {/* <td className='border border-black  bg-fondoItemsTabla'>
                                         {items.Yfalla}
-                                    </td>
+                                    </td> */}
                                     <td className='border border-black  bg-fondoItemsTabla'>
                                         {items.Ancho}
                                     </td>
