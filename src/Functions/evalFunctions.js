@@ -262,9 +262,7 @@ const obtenerDatav2=async(data,dataFormulario,setval,pci,setValRed,setValRedCorr
 
   //final
   let arrayFinal=_.cloneDeep(itemsReagrupados)
-  console.log(itemsReagrupados)
   arrayFinal.forEach(items=>{
-    console.log(items)
     items.map(item=>{
       item.DS=item.Daño+item.Severidad
       item.AreaMuestra=longitud*item.AnchoDeCarril
@@ -273,7 +271,6 @@ const obtenerDatav2=async(data,dataFormulario,setval,pci,setValRed,setValRedCorr
     })
   })
   setval(arrayFinal)
-  console.log(arrayFinal)
   calculoValorReducido(arrayFinal,pci,setValRed,setValRedCorregido,longitud,setResultadoValDeducido)
 }
 
@@ -407,7 +404,11 @@ const calculoValorReducido = async (arrayFinal,pci,setValRed,setValRedCorregido,
       listaVr.forEach(e=>{
         total=total+e
       })
-      q=listaVr.length
+      listaVr.forEach(item=>{
+        if(item>2){
+          q=q+1
+        }
+      })
       switch(q){
         case 1:
           VRC= total
