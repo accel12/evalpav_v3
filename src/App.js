@@ -14,7 +14,9 @@ import ValRedContext from './context/ValRedContext';
 import ValRedCorregidoContext from './context/ValRedCorregidoContext';
 import FormularioContext from './context/FormularioContext';
 import ResultadosValorDeducidoContext from './context/ResultadoValDeducidoContext';
-
+import 'bootstrap/dist/css/bootstrap.css';
+import Proyectos from './Pages/Proyectos';
+import Exportacion from './Pages/Exportacion';
 function App() {
   const [val, setval] = useState([])
   const [pci, setPci] = useState([])
@@ -40,11 +42,13 @@ function App() {
                     <Routes>
                       <Route path="/" element={<Home />} />
                       <Route path="/Login" element={<Login />} />
+                      <Route path='/Proyectos' element={<Proyectos />} />
                       <Route path="/Registro" element={<Register />} />
                       <Route path="/Tramo" element={<Tramo />} />
                       <Route path="/Evaluacion" element={<Evaluacion  />} >
                         <Route path='Inicio' element= {<DatosEvaluacion setval={setval} setIndice={setIndice} setPci={setPci} setValRed={setValRed} setValRedCorregido={setValRedCorregido} setFormulario={setFormulario} setResultadoValDeducido={setResultadoValDeducido} />}/>
                         <Route path='Calculo' element= {<DashBoard setIndice={setIndice} />}  />
+                        <Route path='Exportacion' element= {<Exportacion />}  />
                       </Route>
                     </Routes>
                   </BrowserRouter>

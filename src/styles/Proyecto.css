@@ -1,0 +1,94 @@
+﻿
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+body,
+
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    min-width:800px;
+}
+.contenido {
+    margin: 0;
+    padding: 0;
+    background-image: url("../Images/bg1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    height: 100%;
+    isolation: isolate;
+}
+
+.contenido::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: white;
+    z-index: -1;
+    opacity: .5;
+}
+
+.contenedorProyectos {
+    background-color: #003554 !important;
+    max-width:800px;
+    color:white;
+    border-start-start-radius: 30px !important;
+    border-start-end-radius: 30px !important;
+}
+
+.contenedor {
+    padding:30px;
+}
+
+.titulo {
+    border-start-start-radius: 30px !important;
+    border-start-end-radius: 30px !important;
+    background-color: #006494 !important;
+}
+
+.titulo p{
+    font-size:30px;
+    font-weight:bold;
+    text-decoration-line:underline;
+}
+
+
+
+.outer {
+    top: 30%;
+    left: 40%;
+}
+
+ul {
+    list-style: none;
+}
+
+#ul {
+    margin: 0;
+    padding: 0;
+}
+
+.caret {
+    cursor: pointer;
+    user-select: none;
+}
+
+    .caret::before {
+        content: "\25B6";
+        color: black;
+        display: inline-block;
+        margin-right: 5px;
+    }
+
+.caret-down::before {
+    transform: rotate(90deg);
+}
+
+.nested {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+

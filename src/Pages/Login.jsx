@@ -1,21 +1,71 @@
-import React from 'react'
-import bg from '../Images/bg1.jpg'
+import React from "react";
+import bg from "../Images/bg1.jpg";
 import { Link } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import Logo from "../Images/Logo2.png";
+import "../styles/Proyecto.css";
+import "../styles/Login.css";
+import { FaKey, FaUserAlt } from "react-icons/fa";
 const Login = () => {
-    const navigate = useNavigate();
-    return (
-        <div className="h-screen flex justify-center bg-fondoPrincipal">
-            <div className='flex h-altura justify-center items-center flex-col'>
-                <div className='flex items-center flex-col space-y-7 mb-7'>
-                    <input className='w-64 h-8 rounded-xl border border-black text-center' placeholder='USUARIO' type={'username'} />
-                    <input className='w-64 h-8 rounded-xl border border-black text-center' placeholder='COTRASEÑA' type={'password'} />
-                </div>
-                <button className='bg-verde hover:bg-green-700 text-white py-1 px-8 rounded-3xl w-44 h-11' onClick={()=>navigate('/Evaluacion/Inicio')}>ACCEDER</button>
-                <Link to="/" className=' underline'>OLVIDASTE COTRASEÑA</Link>
+  const navigate = useNavigate();
+  const validarUsuario = () => {
+    navigate("/Evaluacion");
+  };
+  return (
+    <div className="contenido">
+      <div className="container h-100">
+        <div className="d-flex justify-content-center h-100">
+          <div className="user_card">
+            <div className="d-flex justify-content-center">
+              <div className="brand_logo_container">
+                <img src={Logo} className="brand_logo" alt="Logo" />
+              </div>
             </div>
+            <div className="d-flex justify-content-center flex-column contenedor">
+              <div className="d-flex justify-content-center links">
+                <p className="inicioSesion">Iniciar Sesión</p>
+              </div>
+              <div className="input-group mb-3">
+                <div className="input-group-append">
+                  <span className="input-group-text">
+                    <FaUserAlt />
+                  </span>
+                </div>
+                <input
+                  type="text"
+                  name="Usuario"
+                  className="form-control input_user"
+                  placeholder="usuario"
+                />
+              </div>
+              <div className="input-group mb-2">
+                <div className="input-group-append">
+                  <span className="input-group-text">
+                    <FaKey />
+                  </span>
+                </div>
+                <input
+                  type="password"
+                  name="Clave"
+                  className="form-control input_pass"
+                  placeholder="password"
+                />
+              </div>
+              <div className="d-flex justify-content-center mt-3 login_container">
+                <button
+                  name="button"
+                  className="btn login_btn"
+                  onClick={validarUsuario}
+                >
+                  Ingresar
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
 
-export default Login
+export default Login;
